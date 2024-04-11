@@ -1,6 +1,6 @@
 INSERT INTO users (name, username, password, email, is_admin) VALUES
-('Gonçalo Gonçalves', 'GGgoat', 'pre_hashed_password_goncalo', 'goncalogoat@example.com', 0),
-('Pedro Flácido', 'PedroDuro', 'pre_hashed_password_pedro', 'pedroflacido@example.com', 1);
+('Gonçalo Gonçalves', 'GGgoat', '$2y$10$j0kNblannc5.geWCrXu1qOD75tgyyPYVsU70NxIxUyoqxu07cVF32', 'goncalogoat@example.com', 0),
+('Pedro Flácido', 'PedroDuro', '$2y$10$nmJbYzgrwXeWvxjGB64k8eytSbwl8oAo8TJZWj/Uhhc8HYCiyWmP.', 'pedroflacido@example.com', 1);
 
 INSERT INTO categories (name) VALUES
 ('Roupa'),

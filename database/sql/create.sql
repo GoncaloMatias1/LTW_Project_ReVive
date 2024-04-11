@@ -1,17 +1,12 @@
-PRAGMA foreign_keys = off;
-.mode columns
-.headers on
-.nullvalue NULL
+PRAGMA foreign_keys = ON;
 
-
-DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS categories;
-DROP TABLE IF EXISTS items;
-DROP TABLE IF EXISTS transactions;
-DROP TABLE IF EXISTS messages;
-DROP TABLE IF EXISTS reviews;
 DROP TABLE IF EXISTS wishlist;
-
+DROP TABLE IF EXISTS reviews;
+DROP TABLE IF EXISTS messages;
+DROP TABLE IF EXISTS transactions;
+DROP TABLE IF EXISTS items;
+DROP TABLE IF EXISTS categories;
+DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
     user_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -38,7 +33,7 @@ CREATE TABLE items (
     size TEXT,
     condition TEXT,
     price REAL NOT NULL,
-    -- image_path TEXT, -- Caminho para as imagens do item
+    image_path TEXT, -- Path to item images
     FOREIGN KEY (user_id) REFERENCES users(user_id),
     FOREIGN KEY (category_id) REFERENCES categories(category_id)
 );
@@ -84,4 +79,3 @@ CREATE TABLE wishlist (
     FOREIGN KEY (item_id) REFERENCES items(item_id),
     PRIMARY KEY (user_id, item_id)
 );
-

@@ -1,5 +1,3 @@
 <?php
-
-    header("location: pages")
-
+    header('Location: pages');
 ?>

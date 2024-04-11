@@ -26,4 +26,3 @@ function drawHeader(){ ?>
 </html>
 <?php } ?>
 
-?>

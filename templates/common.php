@@ -11,7 +11,6 @@ function drawHeader(){ ?>
             </h1>
         </header>
     </body>
-
 <?php
 }
 ?>

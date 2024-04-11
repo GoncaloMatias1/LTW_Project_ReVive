@@ -3,6 +3,7 @@
 function drawHeader(){ ?>
 
 <!DOCTYPE html>
+</html>
 
     <body>
         <header>
@@ -12,6 +13,17 @@ function drawHeader(){ ?>
         </header>
     </body>
 
-<?php
-}
+<?php } ?>
+
+
+<? function drawFooter() { ?>
+    </main>
+
+    <footer>
+      LTW Buy & Sell &copy; 2024
+    </footer>
+  </body>
+</html>
+<?php } ?>
+
 ?>

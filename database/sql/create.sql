@@ -32,6 +32,7 @@ CREATE TABLE items (
     model TEXT,
     size TEXT,
     condition TEXT,
+    city TEXT NOT NULL,
     price REAL NOT NULL,
     image_path TEXT, -- Path to item images
     FOREIGN KEY (user_id) REFERENCES users(user_id),

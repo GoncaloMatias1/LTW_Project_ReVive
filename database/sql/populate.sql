@@ -11,7 +11,7 @@ INSERT INTO categories (name) VALUES
 ('Entretenimento'),
 ('Desporto');
 
-INSERT INTO items (user_id, category_id, title, description, brand, model, size, condition, price, image_path) VALUES
-(1, 1, 'Camisa preta', 'Camisa preta de algodão', 'Nike', 'Camisa Basic', 'M', 'Como Nova', 19.99, '/path/to/camisa_preta.jpg'),
-(2, 2, 'Telemóvel', 'Smartphone com câmera de alta resolução', 'Samsung', 'Galaxy S20', NULL, 'Como Novo', 699.99, '/path/to/telemovel.jpg'),
-(2, 5, 'Livro', 'Best-seller de ficção científica', 'Arthur C. Clarke', '2001: A Space Odyssey', NULL, 'Usado', 12.50, '/path/to/livro.jpg');
+INSERT INTO items (user_id, category_id, title, description, brand, model, size, condition, city, price, image_path) VALUES
+(1, 1, 'Camisa preta', 'Camisa preta de algodão', 'Nike', 'Camisa Basic', 'M', 'Como Nova', 'Porto', 19.99, '/path/to/camisa_preta.jpg'),
+(2, 2, 'Telemóvel', 'Smartphone com câmera de alta resolução', 'Samsung', 'Galaxy S20', NULL, 'Como Novo', 'Lisboa', 699.99, '/path/to/telemovel.jpg'),
+(2, 5, 'Livro', 'Best-seller de ficção científica', 'Arthur C. Clarke', '2001: A Space Odyssey', NULL, 'Usado', 'Porto', 12.50, '/path/to/livro.jpg');

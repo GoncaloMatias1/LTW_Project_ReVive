@@ -16,7 +16,7 @@ function drawHeader(){ ?>
 <?php } ?>
 
 
-<? function drawFooter() { ?>
+<?php function drawFooter() { ?>
     </main>
 
     <footer>

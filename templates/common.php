@@ -1,6 +1,4 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
 
 function drawHeader($title = 'Default Title'){ ?>
 <!DOCTYPE html>
@@ -13,9 +11,7 @@ function drawHeader($title = 'Default Title'){ ?>
 </head>
 <body>
     <header>
-        <h1>
-            <a href="../index.php">TEMPLATE NAME</a>
-        </h1>
+        <h1><a href="../pages/index.php">TEMPLATE NAME</a></h1>
     </header>
     <main>
 <?php }

@@ -5,15 +5,15 @@ body, html {
 }
 
 header h1, footer {
-    text-align: center; 
+    text-align: center;
 }
 
 header, footer {
     margin: 0;
-    padding: 1em 0; 
+    padding: 1em 0;
 }
 
-.register-container {
+.login-container {
     width: 100%;
     max-width: 400px;
     margin: auto;
@@ -49,7 +49,7 @@ input[type="password"] {
     box-sizing: border-box;
 }
 
-.register-button {
+.login-button {
     background-color: #007aff;
     color: white;
     padding: 15px 20px;
@@ -61,12 +61,12 @@ input[type="password"] {
     font-size: 16px;
 }
 
-.register-button:hover {
+.login-button:hover {
     opacity: 0.8;
 }
 
 @media screen and (max-width: 400px) {
-    .register-container {
+    .login-container {
         width: 95%;
         display: block;
         margin: auto;

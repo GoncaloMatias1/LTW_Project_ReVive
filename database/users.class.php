@@ -18,6 +18,10 @@
             $this->is_admin = $is_admin;
         }
 
+        function username() {
+            return $this->username;
+          }
+      
         function save($db) {
             $stmt = $db->prepare('
             UPDATE Users SET name = ?, username = ?

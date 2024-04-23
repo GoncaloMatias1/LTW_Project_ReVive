@@ -5,6 +5,7 @@ require_once(__DIR__ . '/../utils/session.php');
 session_start();
 
 drawHeader('Login');
+drawFooter();
 ?>
 
 <div class="register-container">
@@ -22,5 +23,5 @@ drawHeader('Login');
 </div>
 
 <?php
-drawFooter();
+
 ?>

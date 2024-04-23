@@ -11,7 +11,7 @@ function drawHeader($title = 'Default Title'){ ?>
 </head>
 <body>
     <header>
-        <h1><a href="../pages/index.php">TEMPLATE NAME</a></h1>
+        <h1><a href="../pages/index.php">reVive</a></h1>
     </header>
     <main>
 <?php }

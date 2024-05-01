@@ -1,23 +1,30 @@
 <?php
 require_once(__DIR__ . '/../templates/common.php');
 require_once(__DIR__ . '/../utils/session.php');
+require_once(__DIR__ . '/../database/connection.db.php');
+require_once(__DIR__ . '/../database/items.class.php');
 
-drawHeader('Main Page');
+$session = new Session();
+$db = getDatabaseConnection();
+
+$items = Item::getAllItems($db);
+
+drawHeader('Main Page', true, true);
 ?>
 
 <div class="content-container">
     <h2>Featured Items</h2>
     <div class="items-list">
-        <div class="item">
-            <img src="path_to_image" alt="Item Image">
-            <h3>Item Name</h3>
-            <p>Description of the item...</p>
-            <span>Price: $xx.xx</span>
-            <button>Buy Now</button>
-        </div>
+        <?php foreach ($items as $item): ?>
+            <div class="item">
+                <img src="<?= htmlspecialchars($item->image_path) ?>" alt="Item Image">
+                <h3><?= htmlspecialchars($item->title) ?></h3>
+                <p><?= htmlspecialchars($item->description) ?></p>
+                <span>Price: $<?= htmlspecialchars(number_format($item->price, 2)) ?></span>
+                <button>Buy Now</button>
+            </div>
+        <?php endforeach; ?>
     </div>
 </div>
 
-<?php
-drawFooter();
-?>
+<?php drawFooter(); ?>

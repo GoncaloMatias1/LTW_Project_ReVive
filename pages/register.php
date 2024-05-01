@@ -4,7 +4,7 @@ require_once(__DIR__ . '/../utils/session.php');
 
 session_start();
 
-drawHeader('Register');
+drawHeader('Register', 'register');
 ?>
 
 <div class="register-container">

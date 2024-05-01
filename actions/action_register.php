@@ -7,6 +7,5 @@
     require_once(__DIR__ . '/../database/user.class.php');
     $db = getDatabaseConnection();
 
-    if(User::)
 
 ?>

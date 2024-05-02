@@ -35,12 +35,14 @@ class Users {
         $user = $stmt->fetch();
 
         if ($user && password_verify($password, $user['password'])) {
+            $is_admin = (bool)$user['is_admin'];
+
             return new Users(
                 $user['user_id'],
                 $user['name'],
                 $user['username'],
                 $user['email'],
-                $user['is_admin']
+                $is_admin  
             );
         } else {
             return null;

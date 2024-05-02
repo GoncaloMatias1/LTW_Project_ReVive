@@ -1,5 +1,5 @@
 <?php
-function drawHeader($title = 'reVive : Buy and Sell', $includeTopBar = false) { ?>
+function drawHeader($title = 'reVive : Buy and Sell', $includeTopBar = false, $includeProfileIcon = false) { ?>
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -30,6 +30,11 @@ function drawHeader($title = 'reVive : Buy and Sell', $includeTopBar = false) { 
             .top-bar a:hover, .bottom-bar-button:hover {
                 opacity: 0.8;
             }
+            
+            .profile-icon {
+                margin-right: 10px;
+                cursor: pointer;
+            }
         </style>
     </head>
     <body>
@@ -40,6 +45,9 @@ function drawHeader($title = 'reVive : Buy and Sell', $includeTopBar = false) { 
                     <a href="../pages/index.php">reVive</a>
                 </div>
                 <div class="top-bar-right">
+                    <?php if ($includeProfileIcon): ?>
+                    <a href="../pages/profile.php" class="profile-icon">Profile</a>
+                    <?php endif; ?>
                     <a href="../pages/login.php">Login</a>
                     <a href="../pages/register.php">Create Account</a>
                 </div>

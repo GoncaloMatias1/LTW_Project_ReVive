@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     $is_admin = false;
-    $registration_success = User::insertUser($db, $name, $email, $email, $password, $is_admin);
+    $registration_success = Users::insertUser($db, $name, $email, $email, $password, $is_admin);
 
     if ($registration_success) {
         echo "User successfully registered.";

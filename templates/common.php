@@ -52,9 +52,10 @@ function drawHeader($title = 'reVive : Buy and Sell', $includeTopBar = false) { 
     function drawBottomBar() { ?>
         <div class="bottom-bar">
             <div class="bottom-bar-container">
-                <a href="/about-us" class="bottom-bar-button">About Us</a>
-                <a href="/contact" class="bottom-bar-button">Contact Us</a>
-                <a href="/terms" class="bottom-bar-button">Terms of Service</a>
+                <a href="/pages/about-us.php" class="bottom-bar-button">About Us</a>
+                <a href="/pages/terms.php" class="bottom-bar-button">Terms of Service</a>
+                <a href="/pages/contact.php" class="bottom-bar-button">Contact Us</a>
+                <a href="/pages/cookies.php" class="bottom-bar-button">Cookie Policy</a>
             </div>
         </div>
     <?php }

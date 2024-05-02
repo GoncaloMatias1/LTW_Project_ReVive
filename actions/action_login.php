@@ -1,23 +1,23 @@
 <?php
+require_once(__DIR__ . '/../utils/session.php');
+require_once(__DIR__ . '/../database/connection.db.php');
+require_once(__DIR__ . '/../database/users.class.php');
+$session = new Session();
+$db = getDatabaseConnection();
 
-    require_once(__DIR__ . '/../utils/session.php');
-    $session = new Session();
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
-    require_once(__DIR__ . '/../database/connection.db.php');
-    require_once(__DIR__ . '/../database/user.class.php');
-    $db = getDatabaseConnection();
-
-    $user = User::getUserLogIn($db, $_POST['email'], $_POST['password']);
+    $user = User::getUserLogIn($db, $email, $password);
 
     if ($user) {
-        $session->setId($user->id);
-        $session->setName($user->username());
-        $session->addMessage('success', 'Login successful!');
-      } else {
-        $session->addMessage('error', 'Wrong password!');
-      }
-
-      header('Location: ' . $_SERVER['HTTP_REFERER']);
-    
-
+        $session->startSession();
+        $_SESSION['user_id'] = $user->id;  
+        header("Location: ../pages/mainPage.php");
+        exit();
+    } else {
+        echo "Invalid login credentials.";
+    }
+}
 ?>

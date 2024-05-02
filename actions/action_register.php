@@ -1,11 +1,28 @@
 <?php
+require_once(__DIR__ . '/../utils/session.php');
+require_once(__DIR__ . '/../database/connection.db.php');
+require_once(__DIR__ . '/../database/users.class.php');
 
-    require_once(__DIR__ . '/../utils/session.php');
-    $session = new Session();
+$session = new Session();
+$db = getDatabaseConnection();
 
-    require_once(__DIR__ . '/../database/connection.db.php');
-    require_once(__DIR__ . '/../database/user.class.php');
-    $db = getDatabaseConnection();
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
 
+    if ($password !== $confirm_password) {
+        die('Passwords do not match.');
+    }
 
+    $is_admin = false;
+    $registration_success = User::insertUser($db, $name, $email, $email, $password, $is_admin);
+
+    if ($registration_success) {
+        echo "User successfully registered.";
+    } else {
+        echo "Failed to register user.";
+    }
+}
 ?>

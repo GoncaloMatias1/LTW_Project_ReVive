@@ -10,7 +10,7 @@ $db = getDatabaseConnection();
 $itemId = intval($_GET['id'] ?? 0);
 $item = Item::getItemById($db, $itemId);
 
-drawHeader('Item Details', true, $session->isLoggedIn());
+drawHeader('Item Details', true, false, $session);
 ?>
 
 <link rel="stylesheet" type="text/css" href="../styles/itemDetail.css">

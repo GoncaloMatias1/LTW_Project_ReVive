@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $user = Users::getUserLogIn($db, $email, $password);
 
     if ($user) {
-        $session->startSession();
+        
         $_SESSION['user_id'] = $user->id;
     
         $redirectPage = $_GET['redirect'] ?? 'mainPage';

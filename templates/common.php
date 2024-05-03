@@ -1,9 +1,7 @@
 <?php
 require_once(__DIR__ . '/../utils/session.php');
 
-function drawHeader($title = 'reVive : Buy and Sell', $includeTopBar = false, $includeProfileIcon = false) {
-    $session = new Session();
-    $session->startSession();
+function drawHeader($title = 'reVive : Buy and Sell', $includeTopBar = false, $includeProfileIcon = false, Session $session = null) {
 
     ?>
     <!DOCTYPE html>

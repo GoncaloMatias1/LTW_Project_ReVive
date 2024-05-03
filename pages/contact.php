@@ -1,6 +1,10 @@
 <?php
 require_once(__DIR__ . '/../templates/common.php');
-drawHeader('Contact Us', true);
+require_once(__DIR__ . '/../utils/session.php');
+
+$session = new Session();
+
+drawHeader('Contact Us', true, false, $session);
 ?>
 
 <div class="content-container">

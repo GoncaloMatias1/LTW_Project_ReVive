@@ -34,7 +34,7 @@ CREATE TABLE items (
     condition TEXT,
     city TEXT NOT NULL,
     price REAL NOT NULL,
-    image_path TEXT, -- Path to item images
+    image_path TEXT,
     FOREIGN KEY (user_id) REFERENCES users(user_id),
     FOREIGN KEY (category_id) REFERENCES categories(category_id)
 );

@@ -1,6 +1,10 @@
 <?php
 require_once(__DIR__ . '/../templates/common.php');
-drawHeader('Terms of Service', true);
+require_once(__DIR__ . '/../utils/session.php');
+
+$session = new Session();
+
+drawHeader('Terms of Service', true, false, $session);
 ?>
 
 <div class="content-container">

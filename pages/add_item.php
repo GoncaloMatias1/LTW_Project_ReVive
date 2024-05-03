@@ -7,7 +7,7 @@
     $session = new Session();
     $db = getDatabaseConnection();
 
-    drawHeader('Add Item', true);
+    drawHeader('Add Item', true, false, $session);
 ?>
     <div class="add_item_container">
     <form action="../actions/action_add_item.php" method="post">

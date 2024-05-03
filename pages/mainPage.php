@@ -7,9 +7,10 @@ require_once(__DIR__ . '/../database/items.class.php');
 $session = new Session();
 $db = getDatabaseConnection();
 
+
 $items = Item::getAllItems($db);
 
-drawHeader('Main Page', true, true);
+drawHeader('Main Page', true, true, $session);
 ?>
 
 <div class="content-container">

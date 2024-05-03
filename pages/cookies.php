@@ -1,6 +1,10 @@
 <?php
 require_once(__DIR__ . '/../templates/common.php');
-drawHeader('Cookie Policy', true);
+require_once(__DIR__ . '/../utils/session.php');
+
+$session = new Session();
+
+drawHeader('Cookie Policy', true, false, $session);
 ?>
 
 <div class="content-container">

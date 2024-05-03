@@ -15,7 +15,7 @@ $user_id = $_SESSION['user_id'];
 $user = Users::getUser($db, $user_id);
 
 require_once(__DIR__ . '/../templates/common.php');
-drawHeader('Profile', true, false);
+drawHeader('Profile', true, false, $session);
 ?>
 
 <div class="profile-container">

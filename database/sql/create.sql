@@ -27,14 +27,10 @@ CREATE TABLE items (
     user_id INTEGER NOT NULL,
     category_id INTEGER NOT NULL,
     title TEXT NOT NULL,
-    description TEXT,
-    brand TEXT,
-    model TEXT,
-    size TEXT,
-    condition TEXT,
+    description TEXT NOT NULL,
     city TEXT NOT NULL,
     price REAL NOT NULL,
-    image_path TEXT, -- Path to item images
+    image_path TEXT NOT NULL, -- Path to item images
     FOREIGN KEY (user_id) REFERENCES users(user_id),
     FOREIGN KEY (category_id) REFERENCES categories(category_id)
 );

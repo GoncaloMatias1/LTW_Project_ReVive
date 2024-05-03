@@ -50,7 +50,7 @@ class Users {
     public static function getUser(PDO $db, int $id): ?Users {
         $stmt = $db->prepare('
         SELECT user_id, name, username, email, is_admin
-        FROM Users
+        FROM users
         WHERE user_id = ?
         ');
         $stmt->execute([$id]);
@@ -71,7 +71,7 @@ class Users {
 
     public static function insertUser(PDO $db, string $name, string $username, string $email, string $password, bool $is_admin = false): bool {
         $stmt = $db->prepare('
-            INSERT INTO Users (name, username, email, password, is_admin)
+            INSERT INTO users (name, username, email, password, is_admin)
             VALUES (?, ?, ?, ?, ?)
         ');
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);

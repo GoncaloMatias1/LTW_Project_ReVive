@@ -10,15 +10,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    $user = Users::getUserLogIn($db, $email, $password); // Changed from User to Users
+    $user = Users::getUserLogIn($db, $email, $password);
 
     if ($user) {
         $session->startSession();
         $_SESSION['user_id'] = $user->id;
-        header("Location: ../pages/mainPage.php");
+    
+        $redirectPage = $_GET['redirect'] ?? 'mainPage';
+        header("Location: ../pages/{$redirectPage}.php");
         exit();
     } else {
-        echo "Invalid login credentials.";
+        header("Location: ../pages/login.php?error=invalid_credentials");
+        exit();
     }
 }
 ?>

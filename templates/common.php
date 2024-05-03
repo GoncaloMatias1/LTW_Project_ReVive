@@ -1,14 +1,20 @@
 <?php
-function drawHeader($title = 'reVive : Buy and Sell', $includeTopBar = false, $includeProfileIcon = false) { ?>
+require_once(__DIR__ . '/../utils/session.php');
+
+function drawHeader($title = 'reVive : Buy and Sell', $includeTopBar = false, $includeProfileIcon = false) {
+    $session = new Session();
+    $session->startSession();
+
+    ?>
     <!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title><?php echo $title; ?></title>
-        <link rel="stylesheet" type="text/css" href="/styles/register.css">
-        <link rel="stylesheet" type="text/css" href="/styles/mainPage.css">
-        <link rel="stylesheet" type="text/css" href="/styles/login.css">
+        <link rel="stylesheet" type="text/css" href="../styles/register.css">
+        <link rel="stylesheet" type="text/css" href="../styles/mainPage.css">
+        <link rel="stylesheet" type="text/css" href="../styles/login.css">
         <style>
             .top-bar, .bottom-bar {
                 background-color: #007aff;
@@ -45,36 +51,39 @@ function drawHeader($title = 'reVive : Buy and Sell', $includeTopBar = false, $i
                     <a href="../pages/index.php">reVive</a>
                 </div>
                 <div class="top-bar-right">
-                    <?php if ($includeProfileIcon): ?>
-                    <a href="../pages/profile.php" class="profile-icon">Profile</a>
+                    <?php if ($session->isLoggedIn()): ?>
+                        <?php if ($includeProfileIcon): ?>
+                            <a href="../pages/profile.php" class="profile-icon">Profile</a>
+                        <?php endif; ?>
+                        <a href="../pages/logout.php">Logout</a>
+                    <?php else: ?>
+                        <a href="../pages/login.php">Login</a>
+                        <a href="../pages/register.php">Create Account</a>
                     <?php endif; ?>
-                    <a href="../pages/login.php">Login</a>
-                    <a href="../pages/register.php">Create Account</a>
                 </div>
             </div>
             <?php endif; ?>
         </header>
         <main>
-    <?php }
-    
-    function drawBottomBar() { ?>
-        <div class="bottom-bar">
-            <div class="bottom-bar-container">
-                <a href="/pages/about-us.php" class="bottom-bar-button">About Us</a>
-                <a href="/pages/terms.php" class="bottom-bar-button">Terms of Service</a>
-                <a href="/pages/contact.php" class="bottom-bar-button">Contact Us</a>
-                <a href="/pages/cookies.php" class="bottom-bar-button">Cookie Policy</a>
-            </div>
-        </div>
-    <?php }
-    
-    function drawFooter() { ?>
-        <?php drawBottomBar(); ?>
-        <footer>
-            LTW Buy & Sell &copy; 2024
-        </footer>
+    <?php
+}
+
+function drawFooter() {
+    ?>
         </main>
+        <footer>
+            <div class="bottom-bar">
+                <div class="bottom-bar-container">
+                    <a href="../pages/about-us.php" class="bottom-bar-button">About Us</a>
+                    <a href="../pages/terms.php" class="bottom-bar-button">Terms of Service</a>
+                    <a href="../pages/contact.php" class="bottom-bar-button">Contact Us</a>
+                    <a href="../pages/cookies.php" class="bottom-bar-button">Cookie Policy</a>
+                </div>
+            </div>
+            <p>LTW Buy & Sell &copy; 2024</p>
+        </footer>
     </body>
     </html>
-    <?php }
+    <?php
+}
 ?>

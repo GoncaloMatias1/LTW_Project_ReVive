@@ -9,7 +9,7 @@ drawHeader('Login', 'login');
 
 <main>
     <div class="login-container">
-        <form action="../actions/action_login.php" method="post">
+        <form action="../actions/action_login.php<?= isset($_GET['redirect']) ? '?redirect=' . htmlspecialchars($_GET['redirect']) : '' ?>" method="post">
             <h2>Login</h2>
             <label for="email">Email</label>
             <input type="email" id="email" name="email" required>

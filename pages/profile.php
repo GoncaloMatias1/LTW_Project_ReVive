@@ -7,7 +7,7 @@ $session = new Session();
 $db = getDatabaseConnection();
 
 if (!$session->isLoggedIn()) {
-    header("Location: ../pages/login.php");
+    header("Location: ../pages/login.php?redirect=profile");
     exit();
 }
 

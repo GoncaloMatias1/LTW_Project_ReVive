@@ -5,7 +5,6 @@ require_once(__DIR__ . '/../database/connection.db.php');
 require_once(__DIR__ . '/../database/items.class.php');
 
 $session = new Session();
-$session->startSession();
 
 $db = getDatabaseConnection();
 $itemId = intval($_GET['id'] ?? 0);

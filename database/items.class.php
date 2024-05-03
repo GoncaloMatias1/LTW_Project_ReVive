@@ -11,7 +11,7 @@ class Item {
     public string $image_path;
 
     public function __construct(array $data = []) {
-        $this->id = $data['id'] ?? 0;
+        $this->id = $data['item_id'] ?? 0;
         $this->user_id = $data['user_id'] ?? 0;
         $this->category_id = $data['category_id'] ?? 0;
         $this->title = $data['title'] ?? '';
@@ -30,15 +30,21 @@ class Item {
         }
         return $items;
     }
+    
 
-    public static function insertItem(PDO $db, int $user_id, int $category_id, string $title, string $description, string $city, float $price, string $image_path) {
-        $stmt = $db->prepare('
-            INSERT INTO Items (user_id, category_id, title, description, city, price, image_path)
-            VALUES (?, ?, ?, ?, ?, ?, ?)
-        ');
-        return $stmt->execute([$user_id, $category_id, $title, $description, $city, $price, $image_path]);
+    static function getItemById(PDO $db, int $id): ?Item {
+        $stmt = $db->prepare('SELECT * FROM Items WHERE item_id = ?');
+        if (!$stmt) {
+            die("Prepare failed: " . $db->errorInfo()[2]);
+        }
+        $stmt->execute([$id]);
+        if (!$stmt) {
+            die("Execute failed: " . $db->errorInfo()[2]);
+        }
+        $item = $stmt->fetch();
+        return $item ? new Item($item) : null;
     }
-
+    
 }
 
 ?>

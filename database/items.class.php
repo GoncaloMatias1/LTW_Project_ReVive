@@ -48,6 +48,23 @@ class Item {
         $item = $stmt->fetch();
         return $item ? new Item($item) : null;
     }
+
+    public function addItem(PDO $db): bool {
+        $stmt = $db->prepare("INSERT INTO Items (user_id, category_id, title, description, price, image_path) VALUES (?, ?, ?, ?, ?, ?)");
+        return $stmt->execute([
+            $this->user_id,
+            $this->category_id,
+            $this->title,
+            $this->description,
+            $this->price,
+            $this->image_path
+        ]);
+    }
+
+    public static function deleteItem(PDO $db, int $itemId, int $userId): bool {
+        $stmt = $db->prepare("DELETE FROM Items WHERE item_id = ? AND user_id = ?");
+        return $stmt->execute([$itemId, $userId]);
+    }
     
 }
 

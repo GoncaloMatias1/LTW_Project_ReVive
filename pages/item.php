@@ -20,12 +20,26 @@ drawHeader('Item Details', true, $session->isLoggedIn(), $session);
         <img src="<?= htmlspecialchars($item->image_path) ?>" alt="<?= htmlspecialchars($item->title) ?>">
         <h1><?= htmlspecialchars($item->title) ?></h1>
         <p><?= htmlspecialchars($item->description) ?></p>
-        <p>Brand: <?= htmlspecialchars($item->brand) ?>, Model: <?= htmlspecialchars($item->model) ?></p>
+        <p>Brand: <?= htmlspecialchars($item->brand ?? 'Not specified') ?>, Model: <?= htmlspecialchars($item->model ?? 'Not specified') ?></p>
         <p>Size: <?= htmlspecialchars($item->size ?? 'Not specified') ?></p>
-        <p>Condition: <?= htmlspecialchars($item->condition) ?></p>
-        <p>Located in: <?= htmlspecialchars($item->city) ?></p>
+        <p>Condition: <?= htmlspecialchars($item->condition ?? 'Not specified') ?></p>
+        <p>Located in: <?= htmlspecialchars($item->city ?? 'Not specified') ?></p>
         <p>Price: $<?= htmlspecialchars(number_format($item->price, 2)) ?></p>
-        
+
+        <?php if ($session->isLoggedIn()): ?>
+            <form action="../pages/add_to_favorites.php" method="post">
+                <input type="hidden" name="item_id" value="<?= $item->id ?>">
+                <button type="submit">Add to Favorites</button>
+            </form>
+        <?php endif; ?>
+
+        <?php if ($session->isLoggedIn() && $item->user_id == $_SESSION['user_id']): ?>
+            <form action="../actions/action_delete_item.php" method="post">
+                <input type="hidden" name="item_id" value="<?= $item->id ?>">
+                <button type="submit">Delete Item</button>
+            </form>
+        <?php endif; ?>
+
         <?php if ($session->isLoggedIn()): ?>
             <form action="submit_review.php" method="post">
                 <input type="hidden" name="item_id" value="<?= $item->id ?>">

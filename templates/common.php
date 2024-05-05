@@ -2,14 +2,13 @@
 require_once(__DIR__ . '/../utils/session.php');
 
 function drawHeader($title = 'reVive : Buy and Sell', $includeTopBar = false, $includeProfileIcon = false, Session $session = null) {
-
     ?>
     <!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title><?php echo $title; ?></title>
+        <title><?= $title; ?></title>
         <link rel="stylesheet" type="text/css" href="../styles/register.css">
         <link rel="stylesheet" type="text/css" href="../styles/mainPage.css">
         <link rel="stylesheet" type="text/css" href="../styles/login.css">
@@ -22,7 +21,7 @@ function drawHeader($title = 'reVive : Buy and Sell', $includeTopBar = false, $i
                 padding: 25px 35px;
                 align-items: center;
             }
-    
+
             .top-bar a, .bottom-bar-button {
                 color: white;
                 text-decoration: none;
@@ -30,11 +29,11 @@ function drawHeader($title = 'reVive : Buy and Sell', $includeTopBar = false, $i
                 font-size: 16px;
                 transition: opacity 0.3s;
             }
-    
+
             .top-bar a:hover, .bottom-bar-button:hover {
                 opacity: 0.8;
             }
-            
+
             .profile-icon {
                 margin-right: 10px;
                 cursor: pointer;
@@ -49,7 +48,8 @@ function drawHeader($title = 'reVive : Buy and Sell', $includeTopBar = false, $i
                     <a href="../pages/index.php">reVive</a>
                 </div>
                 <div class="top-bar-right">
-                    <?php if ($session->isLoggedIn()): ?>
+                    <?php if ($session && $session->isLoggedIn()): ?>
+                        <a href="../pages/create_item.php" class="profile-icon">Sell Item</a>
                         <?php if ($includeProfileIcon): ?>
                             <a href="../pages/profile.php" class="profile-icon">Profile</a>
                         <?php endif; ?>

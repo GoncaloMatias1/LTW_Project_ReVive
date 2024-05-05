@@ -75,3 +75,19 @@ footer {
     box-sizing: border-box; 
     margin: 20px 0;
 }
+
+.user-reviews ul {
+    list-style: none;
+    padding: 0;
+}
+
+.user-reviews li {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+}
+
+.user-reviews strong {
+    color: #333;
+}

@@ -3,14 +3,14 @@ require_once(__DIR__ . '/../templates/common.php');
 require_once(__DIR__ . '/../utils/session.php');
 require_once(__DIR__ . '/../database/connection.db.php');
 require_once(__DIR__ . '/../database/items.class.php');
+require_once(__DIR__ . '/../database/reviews.class.php');
 
 $session = new Session();
-
 $db = getDatabaseConnection();
 $itemId = intval($_GET['id'] ?? 0);
 $item = Item::getItemById($db, $itemId);
 
-drawHeader('Item Details', true, false, $session);
+drawHeader('Item Details', true, $session->isLoggedIn(), $session);
 ?>
 
 <link rel="stylesheet" type="text/css" href="../styles/itemDetail.css">
@@ -27,12 +27,15 @@ drawHeader('Item Details', true, false, $session);
         <p>Price: $<?= htmlspecialchars(number_format($item->price, 2)) ?></p>
         
         <?php if ($session->isLoggedIn()): ?>
-            <form action="add_to_favorites.php" method="post">
+            <form action="submit_review.php" method="post">
                 <input type="hidden" name="item_id" value="<?= $item->id ?>">
-                <button type="submit">Add to Favorites</button>
+                <label for="rating">Rating (1-5):</label>
+                <input type="number" id="rating" name="rating" min="1" max="5" required>
+                <label for="comment">Comment:</label>
+                <textarea id="comment" name="comment" required></textarea>
+                <button type="submit">Submit Review</button>
             </form>
         <?php endif; ?>
-        
     <?php else: ?>
         <p>Item not found.</p>
     <?php endif; ?>

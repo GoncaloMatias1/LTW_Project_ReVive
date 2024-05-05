@@ -62,9 +62,9 @@ CREATE TABLE reviews (
     review_id INTEGER PRIMARY KEY AUTOINCREMENT,
     item_id INTEGER NOT NULL,
     user_id INTEGER NOT NULL,
-    rating INTEGER NOT NULL,
+    rating INTEGER NOT NULL CHECK (rating >= 1 AND rating <= 5),
     comment TEXT,
-    review_date DATETIME NOT NULL,
+    review_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (item_id) REFERENCES items(item_id),
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );

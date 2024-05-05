@@ -48,26 +48,22 @@ class Users {
     }    
 
     public static function getUser(PDO $db, int $id): ?Users {
-        $stmt = $db->prepare('
-        SELECT user_id, name, username, email, is_admin
-        FROM users
-        WHERE user_id = ?
-        ');
+        $stmt = $db->prepare('SELECT user_id, name, username, email, is_admin FROM users WHERE user_id = ?');
         $stmt->execute([$id]);
-
-        $user = $stmt->fetch();
+    
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
         if ($user) {
             return new Users(
                 $user['user_id'],
                 $user['name'],
                 $user['username'],
                 $user['email'],
-                $user['is_admin']
+                (bool) $user['is_admin']  
             );
         } else {
             return null;
         }
-    }
+    }    
 
     public static function insertUser(PDO $db, string $name, string $username, string $email, string $password, bool $is_admin = false): bool {
         $stmt = $db->prepare('

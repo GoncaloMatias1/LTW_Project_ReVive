@@ -25,7 +25,14 @@ drawHeader('Item Details', true, false, $session);
         <p>Condition: <?= htmlspecialchars($item->condition) ?></p>
         <p>Located in: <?= htmlspecialchars($item->city) ?></p>
         <p>Price: $<?= htmlspecialchars(number_format($item->price, 2)) ?></p>
-        <button>Add to Wishlist</button>
+        
+        <?php if ($session->isLoggedIn()): ?>
+            <form action="add_to_favorites.php" method="post">
+                <input type="hidden" name="item_id" value="<?= $item->id ?>">
+                <button type="submit">Add to Favorites</button>
+            </form>
+        <?php endif; ?>
+        
     <?php else: ?>
         <p>Item not found.</p>
     <?php endif; ?>

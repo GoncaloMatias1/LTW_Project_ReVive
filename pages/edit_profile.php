@@ -18,7 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = $_POST['name'] ?? $user->name;
     $email = $_POST['email'] ?? $user->email;
 
-
     if (Users::updateUser($db, $user_id, $name, $email)) {
         header("Location: profile.php");
         exit;

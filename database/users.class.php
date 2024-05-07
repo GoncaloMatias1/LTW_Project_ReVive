@@ -73,5 +73,10 @@ class Users {
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         return $stmt->execute([$name, $username, $email, $hashed_password, $is_admin]);
     }
+
+    public static function updateUser(PDO $db, int $user_id, string $name, string $email): bool {
+        $stmt = $db->prepare("UPDATE users SET name = ?, email = ? WHERE user_id = ?");
+        return $stmt->execute([$name, $email, $user_id]);
+    }
 }
 ?>

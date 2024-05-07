@@ -65,7 +65,12 @@ class Item {
         $stmt = $db->prepare("DELETE FROM Items WHERE item_id = ? AND user_id = ?");
         return $stmt->execute([$itemId, $userId]);
     }
-    
+
+    public static function getItemsByCategory(PDO $db, int $category_id): array {
+        $stmt = $db->prepare("SELECT * FROM Items WHERE category_id = ?");
+        $stmt->execute([$category_id]);
+        return $stmt->fetchAll(PDO::FETCH_CLASS, 'Item');
+    }    
 }
 
 ?>

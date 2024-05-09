@@ -18,7 +18,37 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $price = floatval($_POST['price'] ?? 0);
     $city = $_POST['city'] ?? '';
     $category_id = intval($_POST['category_id'] ?? 0);
-    $image_path = '';
+
+    $fie = $_FILES['image'];
+
+    $filename = $_FILES['image']['name'];
+    $filetmpname = $_FILES['image']['tmp_name'];
+    $filesize = $_FILES['image']['size'];
+    $fileerror = $_FILES['image']['error'];
+    $filetyoe = $_FILES['image']['type'];
+
+    $fileExt = explode('.', $filename);
+    $fileActualExt = strtolower(end($fileExt));
+
+    $allowed = array('jpg', 'jpeg', 'png');
+
+    if(in_array($fileActualExt, $allowed)){
+        if($fileerror === 0){
+            if($filesize < 1000000){
+                $fileNameNew = uniqid('', true).".".$fileActualExt;
+                $fileDestination = '../uploads/'.$fileNameNew;
+                move_uploaded_file($filetmpname, $fileDestination);
+                $image_path = $fileDestination;
+            } else {
+                echo "Your file is too big!";
+            }
+        } else {
+            echo "There was an error uploading your file!";
+        }
+    } else {
+        echo "You cannot upload files of this type!";
+    }
+
 
     if ($title && $description && $price > 0 && $city && $category_id) {
         $item = new Item([

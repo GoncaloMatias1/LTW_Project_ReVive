@@ -20,9 +20,6 @@ drawHeader('Item Details', true, $session->isLoggedIn(), $session);
         <img src="<?= htmlspecialchars($item->image_path) ?>" alt="<?= htmlspecialchars($item->title) ?>">
         <h1><?= htmlspecialchars($item->title) ?></h1>
         <p><?= htmlspecialchars($item->description) ?></p>
-        <p>Brand: <?= htmlspecialchars($item->brand ?? 'Not specified') ?>, Model: <?= htmlspecialchars($item->model ?? 'Not specified') ?></p>
-        <p>Size: <?= htmlspecialchars($item->size ?? 'Not specified') ?></p>
-        <p>Condition: <?= htmlspecialchars($item->condition ?? 'Not specified') ?></p>
         <p>Located in: <?= htmlspecialchars($item->city ?? 'Not specified') ?></p>
         <p>Price: $<?= htmlspecialchars(number_format($item->price, 2)) ?></p>
 

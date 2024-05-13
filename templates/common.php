@@ -53,6 +53,7 @@ function drawHeader($title = 'reVive : Buy and Sell', $includeTopBar = false, $i
                         <?php if ($includeProfileIcon): ?>
                             <a href="../pages/profile.php" class="profile-icon">Profile</a>
                         <?php endif; ?>
+                        <a href="../pages/my_items.php">My Items</a>
                         <a href="../pages/favorites.php">Favorites</a>
                         <a href="../pages/categories.php">Categories</a> 
                         <a href="../actions/action_logout.php">Logout</a>

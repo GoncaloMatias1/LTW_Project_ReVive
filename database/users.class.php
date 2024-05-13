@@ -74,9 +74,19 @@ class Users {
         return $stmt->execute([$name, $username, $email, $hashed_password, $is_admin]);
     }
 
-    public static function updateUser(PDO $db, int $user_id, string $name, string $email): bool {
-        $stmt = $db->prepare("UPDATE users SET name = ?, email = ? WHERE user_id = ?");
-        return $stmt->execute([$name, $email, $user_id]);
-    }
+    public static function updateUser(PDO $db, int $user_id, string $name, string $username, string $email, ?string $password = null): bool {
+        $query = "UPDATE users SET name = ?, username = ?, email = ?";
+        $params = [$name, $username, $email];
+        if ($password) {
+            $query .= ", password = ?";
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+            $params[] = $hashed_password;
+        }
+        $query .= " WHERE user_id = ?";
+        $params[] = $user_id;
+        
+        $stmt = $db->prepare($query);
+        return $stmt->execute($params);
+    }    
 }
 ?>

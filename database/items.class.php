@@ -70,7 +70,17 @@ class Item {
         $stmt = $db->prepare("SELECT * FROM Items WHERE category_id = ?");
         $stmt->execute([$category_id]);
         return $stmt->fetchAll(PDO::FETCH_CLASS, 'Item');
-    }    
+    }
+    
+    public static function getItemsByUser(PDO $db, int $user_id): array {
+        $stmt = $db->prepare('SELECT * FROM Items WHERE user_id = ?');
+        $stmt->execute([$user_id]);
+        $items = [];
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $items[] = new Item($row);
+        }
+        return $items;
+    }
 }
 
 ?>

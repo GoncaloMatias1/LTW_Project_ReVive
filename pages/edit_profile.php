@@ -16,15 +16,24 @@ $user = Users::getUser($db, $user_id);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = $_POST['name'] ?? $user->name;
+    $username = $_POST['username'] ?? $user->username;
     $email = $_POST['email'] ?? $user->email;
+    $password = $_POST['password'] ?? null;  
 
-    if (Users::updateUser($db, $user_id, $name, $email)) {
+    if (empty($password)) {
+        $updateSuccess = Users::updateUser($db, $user_id, $name, $username, $email);
+    } else {
+        $updateSuccess = Users::updateUser($db, $user_id, $name, $username, $email, $password);
+    }
+
+    if ($updateSuccess) {
         header("Location: profile.php");
         exit;
     } else {
         $error = "Failed to update profile.";
     }
 }
+
 
 require_once(__DIR__ . '/../templates/common.php');
 drawHeader('Edit Profile', true, false, $session);
@@ -40,8 +49,14 @@ drawHeader('Edit Profile', true, false, $session);
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" value="<?= htmlspecialchars($user->name) ?>" required>
 
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" value="<?= htmlspecialchars($user->username) ?>" required>
+
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" value="<?= htmlspecialchars($user->email) ?>" required>
+
+        <label for="password">New Password (leave blank if you do not want to change):</label>
+        <input type="password" id="password" name="password">
 
         <button type="submit">Update Profile</button>
     </form>

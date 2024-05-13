@@ -18,6 +18,8 @@ $categories = Category::getAllCategories($db);
 drawHeader('Add Item', true, true, $session);
 ?>
 
+<link rel="stylesheet" type="text/css" href="../styles/add_item.css">
+
 <div class="add_item_container">
     <form action="../actions/action_add_item.php" method="post" enctype="multipart/form-data">
         <h2>Add New Item</h2>

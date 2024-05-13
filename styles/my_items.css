@@ -1,0 +1,56 @@
+/* Updated CSS to prevent double boxing */
+.items-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    text-align: left;
+}
+
+.items-container .item {
+    border-bottom: 1px solid #eee; /* Remove this if you do not want any separation between items */
+    padding: 20px;
+    margin-bottom: 10px; /* Control space between items */
+    background: #fff; /* Ensure background matches container for seamless appearance */
+    box-shadow: none; /* Remove any additional box-shadow here if not desired */
+}
+
+.items-container .item:last-child {
+    border-bottom: none; /* Ensures no border at the bottom of the last item */
+}
+
+.items-container h1 {
+    color: #333;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.items-container h2 {
+    font-size: 20px;
+    color: #007aff;
+    margin-bottom: 5px;
+}
+
+.items-container p {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.5;
+}
+
+.items-container a {
+    display: inline-block;
+    background-color: #007aff;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.items-container a:hover {
+    background-color: #0056b3;
+}

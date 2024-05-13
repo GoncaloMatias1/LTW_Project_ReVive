@@ -25,26 +25,33 @@ drawHeader('Item Details', true, $session->isLoggedIn(), $session);
 
         <?php if ($session->isLoggedIn()): ?>
             <form action="../pages/add_to_favorites.php" method="post">
-                <input type="hidden" name="item_id" value="<?= $item->id ?>">
+                <input type="hidden" name="item_id" value="<?= htmlspecialchars($item->id) ?>">
                 <button type="submit">Add to Favorites</button>
             </form>
         <?php endif; ?>
 
         <?php if ($session->isLoggedIn() && $item->user_id == $_SESSION['user_id']): ?>
             <form action="../actions/action_delete_item.php" method="post">
-                <input type="hidden" name="item_id" value="<?= $item->id ?>">
+                <input type="hidden" name="item_id" value="<?= htmlspecialchars($item->id) ?>">
                 <button type="submit">Delete Item</button>
             </form>
         <?php endif; ?>
 
         <?php if ($session->isLoggedIn()): ?>
+            <h2>Submit a Review</h2>
             <form action="submit_review.php" method="post">
-                <input type="hidden" name="item_id" value="<?= $item->id ?>">
+                <input type="hidden" name="item_id" value="<?= htmlspecialchars($item->id) ?>">
                 <label for="rating">Rating (1-5):</label>
                 <input type="number" id="rating" name="rating" min="1" max="5" required>
                 <label for="comment">Comment:</label>
                 <textarea id="comment" name="comment" required></textarea>
                 <button type="submit">Submit Review</button>
+            </form>
+
+            <h2>Proceed to Checkout</h2>
+            <form action="checkout.php" method="post">
+                <input type="hidden" name="item_id" value="<?= htmlspecialchars($item->id) ?>">
+                <button type="submit">Proceed to Checkout</button>
             </form>
         <?php endif; ?>
     <?php else: ?>

@@ -17,6 +17,9 @@ $items = Item::getItemsByUser($db, $user_id);
 
 drawHeader('My Items', true, false, $session);
 ?>
+
+<link rel="stylesheet" type="text/css" href="../styles/my_items.css">
+
 <div class="items-container">
     <h1>My Listed Items</h1>
     <?php foreach ($items as $item): ?>

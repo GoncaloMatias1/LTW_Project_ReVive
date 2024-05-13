@@ -18,6 +18,7 @@ $wishlistItems = Wishlist::getUserWishlist($db, $_SESSION['user_id']);
 drawHeader('Your Favorites', true, true, $session);
 ?>
 
+<link rel="stylesheet" type="text/css" href="../styles/favorites.css">
 
 <div class="wishlist-container">
     <?php if (count($wishlistItems) > 0): ?>

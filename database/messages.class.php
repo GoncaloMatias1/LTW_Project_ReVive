@@ -40,4 +40,17 @@ class Message {
         $stmt = $db->prepare('INSERT INTO messages (sender_id, receiver_id, item_id, message) VALUES (?, ?, ?, ?)');
         return $stmt->execute([$sender_id, $receiver_id, $item_id, $message]);
     }
+
+    public static function getConversations(PDO $db, int $user_id): array {
+        $stmt = $db->prepare('
+            SELECT m.item_id, m.receiver_id, u.username, i.title
+            FROM messages m
+            JOIN users u ON m.receiver_id = u.user_id
+            JOIN items i ON m.item_id = i.item_id
+            WHERE m.sender_id = ? OR m.receiver_id = ?
+            GROUP BY m.item_id, m.receiver_id
+        ');
+        $stmt->execute([$user_id, $user_id]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

@@ -11,12 +11,11 @@ if (!$session->isLoggedIn()) {
 }
 
 $db = getDatabaseConnection();
-$itemId = intval($_GET['item_id'] ?? 0); // Ensure item_id is included
+$itemId = intval($_GET['item_id'] ?? 0);
 $receiverId = intval($_GET['receiver_id'] ?? 0);
-$userId = $session->getId();
 
-// Fetch messages for the user and item
-$messages = Message::getMessages($db, $userId, $itemId);
+$senderId = $session->getId();
+$messages = Message::getMessages($db, $senderId, $itemId);
 
 drawHeader('Messages', true, $session->isLoggedIn(), $session);
 ?>
@@ -29,7 +28,7 @@ drawHeader('Messages', true, $session->isLoggedIn(), $session);
         <?php if (!empty($messages)): ?>
             <?php foreach ($messages as $message): ?>
                 <div class="message">
-                    <p><strong><?= htmlspecialchars($message['sender_id']) == $userId ? 'You' : 'Seller' ?>:</strong> <?= htmlspecialchars($message['message']) ?></p>
+                    <p><strong><?= htmlspecialchars($message['sender_id']) == $session->getId() ? 'You' : 'Seller' ?>:</strong> <?= htmlspecialchars($message['message']) ?></p>
                     <span class="timestamp"><?= htmlspecialchars($message['timestamp']) ?></span>
                 </div>
             <?php endforeach; ?>

@@ -9,19 +9,24 @@ if (!$session->isLoggedIn()) {
     exit;
 }
 
-$db = getDatabaseConnection();
-$sender_id = $session->getId();
-$receiver_id = intval($_POST['receiver_id'] ?? 0);
-$item_id = intval($_POST['item_id'] ?? 0); // Ensure item_id is included
-$message = $_POST['message'] ?? '';
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $db = getDatabaseConnection();
+    $sender_id = $session->getId();
+    $receiver_id = intval($_POST['receiver_id'] ?? 0);
+    $item_id = intval($_POST['item_id'] ?? 0);
+    $message = $_POST['message'] ?? '';
 
-if ($receiver_id && $item_id && $message) {
-    if (Message::sendMessage($db, $sender_id, $receiver_id, $item_id, $message)) {
-        header('Location: message.php?item_id=' . $item_id . '&receiver_id=' . $receiver_id);
+    if ($receiver_id && $item_id && $message) {
+        if (Message::sendMessage($db, $sender_id, $receiver_id, $item_id, $message)) {
+            header('Location: message.php?item_id=' . $item_id . '&receiver_id=' . $receiver_id);
+            exit();
+        } else {
+            echo "Error sending message.";
+        }
     } else {
-        echo "Error sending message.";
+        echo "All fields are required.";
     }
 } else {
-    echo "All fields are required.";
+    echo "Invalid request method.";
 }
 ?>

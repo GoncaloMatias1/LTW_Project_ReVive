@@ -8,6 +8,7 @@ $db = getDatabaseConnection();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = $_POST['name'];
+    $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
@@ -17,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     $is_admin = false;
-    $registration_success = Users::insertUser($db, $name, $email, $email, $password, $is_admin);
+    $registration_success = Users::insertUser($db, $name, $username, $email, $password, $is_admin);
 
     if ($registration_success) {
         header('Location: ../pages/login.php');

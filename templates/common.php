@@ -1,5 +1,6 @@
 <?php
 require_once(__DIR__ . '/../utils/session.php');
+require_once(__DIR__ . '/../database/connection.db.php');
 
 function drawHeader($title = 'reVive : Buy and Sell', $includeTopBar = false, $includeProfileIcon = false, Session $session = null) {
     ?>
@@ -58,6 +59,8 @@ function drawHeader($title = 'reVive : Buy and Sell', $includeTopBar = false, $i
                         <a href="../pages/my_items.php">My Items</a>
                         <a href="../pages/favorites.php">Favorites</a>
                         <a href="../pages/categories.php">Categories</a> 
+                        <?php $unreadCount = $session->getUnreadMessageCount(getDatabaseConnection()); ?>
+                        <a href="../pages/conversations.php">Messages<?= $unreadCount > 0 ? " ($unreadCount)" : "" ?></a>
                         <a href="../actions/action_logout.php">Logout</a>
                     <?php else: ?>
                         <a href="../pages/login.php">Login</a>

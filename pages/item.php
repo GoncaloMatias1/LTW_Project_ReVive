@@ -45,6 +45,13 @@ drawHeader('Item Details', true, $session->isLoggedIn(), $session);
                             <button type="submit">Delete Item</button>
                         </form>
                     <?php endif; ?>
+                    <?php if ($session->isLoggedIn() && $item->user_id != $_SESSION['user_id']): ?>
+                        <form action="message.php" method="get">
+                            <input type="hidden" name="item_id" value="<?= htmlspecialchars($item->id) ?>">
+                            <input type="hidden" name="receiver_id" value="<?= htmlspecialchars($item->user_id) ?>">
+                            <button type="submit">Contact Seller</button>
+                        </form>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

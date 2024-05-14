@@ -22,16 +22,17 @@ drawHeader('Your Favorites', true, true, $session);
 
 <div class="wishlist-container">
     <?php if (count($wishlistItems) > 0): ?>
-        <ul>
+        <div class="favorite-items">
             <?php foreach ($wishlistItems as $item): ?>
-                <li>
-                    <img src="<?= htmlspecialchars($item['image_path']) ?>" alt="<?= htmlspecialchars($item['title']) ?>">
-                    <h3><?= htmlspecialchars($item['title']) ?></h3>
-                    <p><?= htmlspecialchars($item['description']) ?></p>
-                    <a href="remove_from_wishlist.php?item_id=<?= $item['item_id'] ?>">Remove</a>
-                </li>
+                <div class="favorite-item">
+                    <a href="item.php?id=<?= $item['item_id'] ?>">
+                        <img src="<?= htmlspecialchars($item['image_path']) ?>" alt="<?= htmlspecialchars($item['title']) ?>">
+                        <h3><?= htmlspecialchars($item['title']) ?></h3>
+                    </a>
+                    <a href="remove_from_wishlist.php?item_id=<?= $item['item_id'] ?>" class="remove-button">Remove</a>
+                </div>
             <?php endforeach; ?>
-        </ul>
+        </div>
     <?php else: ?>
         <p>You haven't added any favorites yet.</p>
     <?php endif; ?>

@@ -22,14 +22,21 @@ drawHeader('My Items', true, false, $session);
 
 <div class="items-container">
     <h1>My Listed Items</h1>
-    <?php foreach ($items as $item): ?>
-        <div class="item">
-            <h2><?= htmlspecialchars($item->title) ?></h2>
-            <p><?= htmlspecialchars($item->description) ?></p>
-            <p>Price: <?= htmlspecialchars($item->price) ?></p>
-            <a href="edit_item.php?item_id=<?= $item->id ?>">Edit</a>
-        </div>
-    <?php endforeach; ?>
+    <div class="items-list">
+        <?php foreach ($items as $item): ?>
+            <div class="item">
+                <img src="<?= htmlspecialchars($item->image_path) ?>" alt="<?= htmlspecialchars($item->title) ?>">
+                <h2><?= htmlspecialchars($item->title) ?></h2>
+                <p><?= htmlspecialchars($item->description) ?></p>
+                <p>Price: $<?= htmlspecialchars(number_format($item->price, 2)) ?></p>
+                <a href="edit_item.php?item_id=<?= $item->id ?>" class="edit-button">Edit</a>
+                <form action="../actions/action_delete_item.php" method="post" style="display:inline;">
+                    <input type="hidden" name="item_id" value="<?= htmlspecialchars($item->id) ?>">
+                    <button type="submit" class="remove-button">Delete</button>
+                </form>
+            </div>
+        <?php endforeach; ?>
+    </div>
 </div>
 <?php
 drawFooter();

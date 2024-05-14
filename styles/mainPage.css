@@ -25,8 +25,6 @@ footer {
     text-align: center; 
 }
 
-
-
 .content-container {
     text-align: center;
     max-width: 1200px;
@@ -55,6 +53,11 @@ footer {
     padding: 20px;
     margin-bottom: 20px;
     text-align: left;
+    transition: transform 0.2s;
+}
+
+.item:hover {
+    transform: translateY(-5px);
 }
 
 .item img {

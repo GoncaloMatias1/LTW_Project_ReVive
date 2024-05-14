@@ -27,11 +27,13 @@ function drawHeader($title = 'reVive : Buy and Sell', $includeTopBar = false, $i
                 text-decoration: none;
                 margin: 0 10px;
                 font-size: 16px;
-                transition: opacity 0.3s;
+                transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
             }
 
             .top-bar a:hover, .bottom-bar-button:hover {
-                opacity: 0.8;
+                background-color: #0056b3;
+                transform: translateY(-2px);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             }
 
             .profile-icon {

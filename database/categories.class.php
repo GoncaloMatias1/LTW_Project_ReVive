@@ -17,5 +17,10 @@ class Category {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function addCategory(PDO $db): bool {
+        $stmt = $db->prepare("INSERT INTO categories (name) VALUES (?)");
+        return $stmt->execute([$this->name]);
+    }
 }
 ?>

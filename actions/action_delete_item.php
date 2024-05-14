@@ -11,9 +11,9 @@ if (!$session->isLoggedIn()) {
 
 $db = getDatabaseConnection();
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['item_id'])) {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['item_id']) && isset($_POST['user_id'])) {
     $itemId = intval($_POST['item_id']);
-    $userId = $_SESSION['user_id']; 
+    $userId = intval($_POST['user_id']); 
 
     if (Item::deleteItem($db, $itemId, $userId)) {
         header("Location: ../pages/mainPage.php?msg=ItemDeleted");

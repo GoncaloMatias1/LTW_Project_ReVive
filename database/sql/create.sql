@@ -53,6 +53,7 @@ CREATE TABLE messages (
     item_id INTEGER NOT NULL,
     message TEXT NOT NULL,
     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+    is_read INT DEFAULT 0,
     FOREIGN KEY (sender_id) REFERENCES users(user_id),
     FOREIGN KEY (receiver_id) REFERENCES users(user_id),
     FOREIGN KEY (item_id) REFERENCES items(item_id)

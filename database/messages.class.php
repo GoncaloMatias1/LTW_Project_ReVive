@@ -24,14 +24,14 @@ class Message {
         return $stmt->execute([$this->sender_id, $this->receiver_id, $this->item_id, $this->message, $this->timestamp, $this->is_read]);
     }
 
-    public static function getMessages(PDO $db, int $user_id, int $item_id): array {
-        $stmt = $db->prepare('SELECT * FROM messages WHERE (sender_id = ? OR receiver_id = ?) AND item_id = ? ORDER BY timestamp ASC');
-        $stmt->execute([$user_id, $user_id, $item_id]);
+    public static function getMessages(PDO $db, int $user_id): array {
+        $stmt = $db->prepare('SELECT * FROM messages WHERE sender_id = ? OR receiver_id = ? ORDER BY timestamp ASC');
+        $stmt->execute([$user_id, $user_id]);
         $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
         // Mark messages as read
-        $stmt = $db->prepare('UPDATE messages SET is_read = 1 WHERE receiver_id = ? AND item_id = ?');
-        $stmt->execute([$user_id, $item_id]);
+        $stmt = $db->prepare('UPDATE messages SET is_read = 1 WHERE receiver_id = ?');
+        $stmt->execute([$user_id]);
 
         return $messages;
     }
@@ -41,4 +41,3 @@ class Message {
         return $stmt->execute([$sender_id, $receiver_id, $item_id, $message]);
     }
 }
-?>

@@ -12,7 +12,7 @@ if (!$session->isLoggedIn()) {
 $db = getDatabaseConnection();
 $sender_id = $session->getId();
 $receiver_id = intval($_POST['receiver_id'] ?? 0);
-$item_id = intval($_POST['item_id'] ?? 0);
+$item_id = intval($_POST['item_id'] ?? 0); // Ensure item_id is included
 $message = $_POST['message'] ?? '';
 
 if ($receiver_id && $item_id && $message) {

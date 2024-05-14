@@ -21,23 +21,29 @@ drawHeader('My Items', true, false, $session);
 <link rel="stylesheet" type="text/css" href="../styles/my_items.css">
 
 <div class="items-container">
-    <h1>My Listed Items</h1>
-    <div class="items-list">
-        <?php foreach ($items as $item): ?>
-            <div class="item">
-                <img src="<?= htmlspecialchars($item->image_path) ?>" alt="<?= htmlspecialchars($item->title) ?>">
-                <h2><?= htmlspecialchars($item->title) ?></h2>
-                <p><?= htmlspecialchars($item->description) ?></p>
-                <p>Price: $<?= htmlspecialchars(number_format($item->price, 2)) ?></p>
-                <a href="edit_item.php?item_id=<?= $item->id ?>" class="edit-button">Edit</a>
-                <form action="../actions/action_delete_item.php" method="post" style="display:inline;">
-                    <input type="hidden" name="item_id" value="<?= htmlspecialchars($item->id) ?>">
-                    <button type="submit" class="remove-button">Delete</button>
-                </form>
-            </div>
-        <?php endforeach; ?>
-    </div>
+    <?php if (count($items) > 0): ?>
+        <div class="items-list">
+            <?php foreach ($items as $item): ?>
+                <div class="item">
+                    <a href="item.php?id=<?= $item->id ?>">
+                        <img src="<?= htmlspecialchars($item->image_path) ?>" alt="<?= htmlspecialchars($item->title) ?>">
+                        <h3><?= htmlspecialchars($item->title) ?></h3>
+                    </a>
+                    <div class="buttons">
+                        <a href="edit_item.php?item_id=<?= $item->id ?>" class="edit-button">Edit</a>
+                        <form action="../actions/action_delete_item.php" method="post" class="delete-form">
+                            <input type="hidden" name="item_id" value="<?= htmlspecialchars($item->id) ?>">
+                            <button type="submit" class="delete-button">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    <?php else: ?>
+        <p>You haven't listed any items yet.</p>
+    <?php endif; ?>
 </div>
+
 <?php
 drawFooter();
 ?>

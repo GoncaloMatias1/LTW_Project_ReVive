@@ -8,6 +8,9 @@ require_once(__DIR__ . '/../database/reviews.class.php');
 
 $session = new Session();
 $db = getDatabaseConnection();
+$user_id = $_SESSION['user_id'];
+$user = Users::getUser($db, $user_id);
+
 $itemId = intval($_GET['id'] ?? 0);
 $item = Item::getItemById($db, $itemId);
 
@@ -35,9 +38,10 @@ drawHeader('Item Details', true, $session->isLoggedIn(), $session);
                         </form>
                     <?php endif; ?>
 
-                    <?php if ($session->isLoggedIn() && $item->user_id == $_SESSION['user_id']): ?>
+                    <?php if ($session->isLoggedIn() && ($item->user_id == $_SESSION['user_id'] || $user->is_admin)): ?>
                         <form action="../actions/action_delete_item.php" method="post">
                             <input type="hidden" name="item_id" value="<?= htmlspecialchars($item->id) ?>">
+                            <input type="hidden" name="user_id" value="<?= htmlspecialchars($item->user_id) ?>">
                             <button type="submit">Delete Item</button>
                         </form>
                     <?php endif; ?>

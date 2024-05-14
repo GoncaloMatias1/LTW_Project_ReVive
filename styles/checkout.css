@@ -1,5 +1,5 @@
 .checkout-container {
-    max-width: 600px; 
+    max-width: 1000px;
     margin: 40px auto;
     padding: 20px;
     background: #fff;
@@ -30,7 +30,7 @@
 
 .checkout-container input[type="text"],
 .checkout-container select {
-    width: 95%; 
+    width: 100%; 
     padding: 10px;
     margin: 5px 0 20px 0;
     display: inline-block;
@@ -38,6 +38,15 @@
     background: #eee;
     border-radius: 4px;
     box-sizing: border-box;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-group {
+    flex: 0 0 48%;
 }
 
 .checkout-container button {

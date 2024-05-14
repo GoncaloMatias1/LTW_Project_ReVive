@@ -35,16 +35,32 @@ drawHeader('Checkout', true, $session->isLoggedIn(), $session);
 
             <fieldset>
                 <legend>Address Details</legend>
-                <label for="street">Street:</label>
-                <input type="text" id="street" name="street" required>
-                <label for="door">Door Number:</label>
-                <input type="text" id="door" name="door" required>
-                <label for="city">City:</label>
-                <input type="text" id="city" name="city" required>
-                <label for="state">State/Province/Region:</label>
-                <input type="text" id="state" name="state" required>
-                <label for="postalCode">Postal Code:</label>
-                <input type="text" id="postalCode" name="postalCode" required>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="street">Street:</label>
+                        <input type="text" id="street" name="street" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="door">Door Number:</label>
+                        <input type="text" id="door" name="door" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="city">City:</label>
+                        <input type="text" id="city" name="city" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="state">State/Province/Region:</label>
+                        <input type="text" id="state" name="state" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="postalCode">Postal Code:</label>
+                        <input type="text" id="postalCode" name="postalCode" required>
+                    </div>
+                </div>
             </fieldset>
 
             <label for="paymentMethod">Payment Method:</label>

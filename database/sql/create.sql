@@ -47,12 +47,12 @@ CREATE TABLE transactions (
 );
 
 CREATE TABLE messages (
-    message_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     sender_id INTEGER NOT NULL,
     receiver_id INTEGER NOT NULL,
-    item_id INTEGER,
-    content TEXT NOT NULL,
-    send_date DATETIME NOT NULL,
+    item_id INTEGER NOT NULL,
+    message TEXT NOT NULL,
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (sender_id) REFERENCES users(user_id),
     FOREIGN KEY (receiver_id) REFERENCES users(user_id),
     FOREIGN KEY (item_id) REFERENCES items(item_id)

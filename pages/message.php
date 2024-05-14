@@ -13,7 +13,9 @@ if (!$session->isLoggedIn()) {
 $db = getDatabaseConnection();
 $itemId = intval($_GET['item_id'] ?? 0);
 $receiverId = intval($_GET['receiver_id'] ?? 0);
-$messages = Message::getMessages($db, $session->getId(), $itemId);
+
+$senderId = $session->getId();
+$messages = Message::getMessages($db, $senderId, $itemId);
 
 drawHeader('Messages', true, $session->isLoggedIn(), $session);
 ?>
@@ -23,12 +25,16 @@ drawHeader('Messages', true, $session->isLoggedIn(), $session);
 <div class="messages-container">
     <h1>Messages</h1>
     <div class="message-list">
-        <?php foreach ($messages as $message): ?>
-            <div class="message">
-                <p><strong><?= htmlspecialchars($message['sender_id']) == $session->getId() ? 'You' : 'Seller' ?>:</strong> <?= htmlspecialchars($message['message']) ?></p>
-                <span class="timestamp"><?= htmlspecialchars($message['timestamp']) ?></span>
-            </div>
-        <?php endforeach; ?>
+        <?php if (!empty($messages)): ?>
+            <?php foreach ($messages as $message): ?>
+                <div class="message">
+                    <p><strong><?= htmlspecialchars($message['sender_id']) == $session->getId() ? 'You' : 'Seller' ?>:</strong> <?= htmlspecialchars($message['message']) ?></p>
+                    <span class="timestamp"><?= htmlspecialchars($message['timestamp']) ?></span>
+                </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p>No messages found.</p>
+        <?php endif; ?>
     </div>
     <form action="send_message.php" method="post">
         <input type="hidden" name="item_id" value="<?= htmlspecialchars($itemId) ?>">

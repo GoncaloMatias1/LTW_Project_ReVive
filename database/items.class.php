@@ -7,13 +7,8 @@ class Item {
     public string $title;
     public string $description;
     public string $city;
-    public float $price;
+    public string $price;
     public string $image_path;
-    
-    public ?string $brand;
-    public ?string $model;
-    public ?string $size;
-    public ?string $condition;
 
     public function __construct(array $data = []) {
         $this->id = $data['item_id'] ?? 0;
@@ -24,11 +19,6 @@ class Item {
         $this->city = $data['city'] ?? '';
         $this->price = $data['price'] ?? 0.0;
         $this->image_path = $data['image_path'] ?? '';
-        
-        $this->brand = $data['brand'] ?? null;
-        $this->model = $data['model'] ?? null;
-        $this->size = $data['size'] ?? null;
-        $this->condition = $data['condition'] ?? null;
     }    
 
     static function getAllItems(PDO $db): array {
@@ -56,12 +46,13 @@ class Item {
     }
 
     public function addItem(PDO $db): bool {
-        $stmt = $db->prepare("INSERT INTO Items (user_id, category_id, title, description, price, image_path) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt = $db->prepare("INSERT INTO Items (user_id, category_id, title, description, city, price, image_path) VALUES (?, ?, ?, ?, ?, ?, ?)");
         return $stmt->execute([
             $this->user_id,
             $this->category_id,
             $this->title,
             $this->description,
+            $this->city,
             $this->price,
             $this->image_path
         ]);

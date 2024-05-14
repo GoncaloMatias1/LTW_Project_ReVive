@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $registration_success = Users::insertUser($db, $name, $email, $email, $password, $is_admin);
 
     if ($registration_success) {
-        echo "User successfully registered.";
+        header('Location: ../pages/login.php');
     } else {
         echo "Failed to register user.";
     }

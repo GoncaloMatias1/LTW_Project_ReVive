@@ -39,6 +39,8 @@ require_once(__DIR__ . '/../templates/common.php');
 drawHeader('Edit Profile', true, false, $session);
 ?>
 
+<link rel="stylesheet" type="text/css" href="../styles/edit_profile.css">
+
 <div class="profile-container">
     <h1>Edit Profile</h1>
     <?php if (isset($error)): ?>

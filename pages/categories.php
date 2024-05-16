@@ -21,6 +21,8 @@ $categories = Category::getAllCategories($db);
 drawHeader('Categories', true, true, $session);
 ?>
 
+<link rel="stylesheet" type="text/css" href="../styles/categories.css">
+
 <div class="content-container">
     <?php if ($user->is_admin): ?>
         <form action="../actions/action_add_category.php" method="POST">

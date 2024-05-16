@@ -20,9 +20,9 @@ main {
 }
 
 footer {
-    flex-shrink: 0; 
-    width: 100%; 
-    text-align: center; 
+    flex-shrink: 0;
+    width: 100%;
+    text-align: center;
 }
 
 .content-container {
@@ -30,7 +30,7 @@ footer {
     max-width: 1200px;
     margin: auto;
     padding: 20px;
-    flex-grow: 1; 
+    flex-grow: 1;
 }
 
 .site-title {
@@ -69,6 +69,12 @@ footer {
 
 .item h3, .item p, .item span {
     margin: 5px 0;
+    color: black; 
+}
+
+.item a {
+    text-decoration: none; 
+    color: inherit; 
 }
 
 .item button {

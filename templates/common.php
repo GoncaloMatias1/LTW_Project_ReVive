@@ -13,35 +13,7 @@ function drawHeader($title = 'reVive : Buy and Sell', $includeTopBar = false, $i
         <link rel="stylesheet" type="text/css" href="../styles/register.css">
         <link rel="stylesheet" type="text/css" href="../styles/mainPage.css">
         <link rel="stylesheet" type="text/css" href="../styles/login.css">
-        <style>
-            .top-bar, .bottom-bar {
-                background-color: #007aff;
-                color: white;
-                display: flex;
-                justify-content: space-between;
-                padding: 25px 35px;
-                align-items: center;
-            }
-
-            .top-bar a, .bottom-bar-button {
-                color: white;
-                text-decoration: none;
-                margin: 0 10px;
-                font-size: 16px;
-                transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
-            }
-
-            .top-bar a:hover, .bottom-bar-button:hover {
-                background-color: #0056b3;
-                transform: translateY(-2px);
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            }
-
-            .profile-icon {
-                margin-right: 10px;
-                cursor: pointer;
-            }
-        </style>
+        <link rel="stylesheet" type="text/css" href="../styles/common.css">
     </head>
     <body>
         <header>

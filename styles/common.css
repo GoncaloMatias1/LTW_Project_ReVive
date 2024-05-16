@@ -1,0 +1,62 @@
+.top-bar, .bottom-bar {
+    background-color: #007aff;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 25px 35px;
+    align-items: center;
+}
+
+.top-bar a, .bottom-bar-button {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+}
+
+.top-bar a:hover, .bottom-bar-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-icon {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.bottom-bar {
+    background-color: #007aff;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.bottom-bar-container {
+    display: flex;
+    justify-content: space-evenly;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.bottom-bar-button {
+    padding: 10px 20px;
+    color: white;
+    background-color: #007aff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    text-align: center;
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.bottom-bar-button:hover {
+    background-color: #0056b3;
+    color: white;
+}

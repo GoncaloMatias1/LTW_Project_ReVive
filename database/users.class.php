@@ -88,5 +88,21 @@ class Users {
         $stmt = $db->prepare($query);
         return $stmt->execute($params);
     }    
+    
+    public static function makeAdmin(PDO $db, int $user_id){
+        $query = "UPDATE users SET is_admin = 1 WHERE user_id = ?";
+        $params[] = $user_id;
+
+        $stmt = $db-> prepare($query);
+        return $stmt->execute($params);
+    }
+
+    public static function removeAdmin(PDO $db, int $user_id){
+        $query = "UPDATE users SET is_admin = 0 WHERE user_id = ?";
+        $params[] = $user_id;
+
+        $stmt = $db-> prepare($query);
+        return $stmt->execute($params);
+    }
 }
 ?>

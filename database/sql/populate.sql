@@ -3,13 +3,13 @@ INSERT INTO users (name, username, password, email, is_admin) VALUES
 ('Pedro Flácido', 'PedroDuro', '$2y$10$nmJbYzgrwXeWvxjGB64k8eytSbwl8oAo8TJZWj/Uhhc8HYCiyWmP.', 'pedroflacido@example.com', 1);
 
 INSERT INTO categories (name) VALUES
-('Roupa'),
-('Tecnologia'),
-('Música'),
-('Automóveis'),
-('Livros'),
-('Entretenimento'),
-('Desporto');
+('Clothing'),
+('Technology'),
+('Music'),
+('Vehicles'),
+('Books'),
+('Entertainement'),
+('Sports');
 
 INSERT INTO items (user_id, category_id, title, description, city, price, image_path) VALUES
 (1, 1, 'Camisa preta', 'Camisa preta de algodão','Porto', 19.99, '/path/to/camisa_preta.jpg'),

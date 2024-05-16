@@ -78,6 +78,23 @@ class Item {
         }
         return $items;
     }
+
+    public function updateItem(PDO $db): bool {
+        $stmt = $db->prepare("
+            UPDATE Items SET title = ?, description = ?, price = ?, city = ?, category_id = ?, image_path = ?
+            WHERE item_id = ? AND user_id = ?
+        ");
+        return $stmt->execute([
+            $this->title,
+            $this->description,
+            $this->price,
+            $this->city,
+            $this->category_id,
+            $this->image_path,
+            $this->id,
+            $this->user_id
+        ]);
+    }    
 }
 
 ?>

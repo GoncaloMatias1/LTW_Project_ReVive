@@ -15,7 +15,7 @@ $itemId = intval($_GET['item_id'] ?? 0);
 $receiverId = intval($_GET['receiver_id'] ?? 0);
 
 $senderId = $session->getId();
-$messages = Message::getMessages($db, $senderId, $itemId);
+$messages = Message::getMessages($db, $senderId, $receiverId, $itemId);
 
 drawHeader('Messages', true, $session->isLoggedIn(), $session);
 ?>

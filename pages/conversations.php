@@ -26,12 +26,12 @@ drawHeader('Conversations', true, $session->isLoggedIn(), $session);
             <?php foreach ($conversations as $conversation): ?>
                 <div class="conversation">
                     <a href="message.php?item_id=<?= htmlspecialchars($conversation['item_id']) ?>&receiver_id=<?= htmlspecialchars($conversation['receiver_id']) ?>">
-                        <p>Conversation with <?= htmlspecialchars($conversation['username']) ?> about <?= htmlspecialchars($conversation['title']) ?></p>
+                        <p>Messages with <?= htmlspecialchars($conversation['username']) ?> about <?= htmlspecialchars($conversation['title']) ?></p>
                     </a>
                 </div>
             <?php endforeach; ?>
         <?php else: ?>
-            <p>No conversations found.</p>
+            <p class="no-conversations">No messages found.</p>
         <?php endif; ?>
     </div>
 </div>

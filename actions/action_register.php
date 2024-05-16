@@ -14,16 +14,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $confirm_password = $_POST['confirm_password'];
 
     if ($password !== $confirm_password) {
-        die('Passwords do not match.');
+        header('Location: ../pages/register.php?error=Passwords do not match.');
+        exit();
+    }
+
+    // Check if email already exists
+    $stmt = $db->prepare('SELECT COUNT(*) FROM users WHERE email = ?');
+    $stmt->execute([$email]);
+    if ($stmt->fetchColumn() > 0) {
+        header('Location: ../pages/register.php?error=This email is already registered.');
+        exit();
     }
 
     $is_admin = false;
-    $registration_success = Users::insertUser($db, $name, $username, $email, $password, $is_admin);
 
-    if ($registration_success) {
-        header('Location: ../pages/login.php');
-    } else {
-        echo "Failed to register user.";
+    try {
+        $registration_success = Users::insertUser($db, $name, $username, $email, $password, $is_admin);
+        if ($registration_success) {
+            header('Location: ../pages/login.php');
+            exit();
+        } else {
+            header('Location: ../pages/register.php?error=Failed to register user.');
+            exit();
+        }
+    } catch (PDOException $e) {
+        header('Location: ../pages/register.php?error=Failed to register user.');
+        exit();
     }
 }
 ?>

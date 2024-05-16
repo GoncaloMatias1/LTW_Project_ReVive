@@ -65,13 +65,28 @@ class Users {
         }
     }    
 
-    public static function insertUser(PDO $db, string $name, string $username, string $email, string $password, bool $is_admin = false): bool {
+    public static function insertUser(PDO $db, string $name, string $username, string $email, string $password, bool $is_admin = false): array {
+        // Check if email already exists
+        $stmt = $db->prepare('SELECT COUNT(*) FROM users WHERE email = ?');
+        $stmt->execute([$email]);
+        $count = $stmt->fetchColumn();
+
+        if ($count > 0) {
+            return ['success' => false, 'message' => 'Email already exists'];
+        }
+
         $stmt = $db->prepare('
             INSERT INTO users (name, username, email, password, is_admin)
             VALUES (?, ?, ?, ?, ?)
         ');
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        return $stmt->execute([$name, $username, $email, $hashed_password, $is_admin]);
+        $result = $stmt->execute([$name, $username, $email, $hashed_password, $is_admin]);
+
+        if ($result) {
+            return ['success' => true, 'message' => 'User registered successfully'];
+        } else {
+            return ['success' => false, 'message' => 'Error registering user'];
+        }
     }
 
     public static function updateUser(PDO $db, int $user_id, string $name, string $username, string $email, ?string $password = null): bool {

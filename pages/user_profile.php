@@ -28,12 +28,12 @@ drawHeader($user->username . "'s Profile", true, $session->isLoggedIn(), $sessio
         <p><strong>Name:</strong> <?php echo htmlspecialchars($user->name); ?></p>
         <p><strong>Email:</strong> <?php echo htmlspecialchars($user->email); ?></p>
     </div>
-    <?php if ($loggedUser->is_admin && !$user->is_admin): ?>
+    <?php if ($loggedUser->is_admin && !$user->is_admin && $user_id != $loggedUser_id): ?>
         <form action="../actions/action_make_admin.php" method="POST">
             <input type="hidden" name="user_id" value="<?= htmlspecialchars($user_id) ?>">
             <button type="submit">Make Admin</button>
     <?php endif; ?>
-    <?php if ($loggedUser->is_admin && $user->is_admin): ?>
+    <?php if ($loggedUser->is_admin && $user->is_admin && $user_id != $loggedUser_id): ?>
         <form action="../actions/action_remove_admin.php" method="POST">
             <input type="hidden" name="user_id" value="<?= htmlspecialchars($user_id) ?>">
             <button type="submit">Remove Admin</button>

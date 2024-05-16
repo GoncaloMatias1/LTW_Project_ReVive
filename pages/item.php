@@ -48,10 +48,14 @@ drawHeader('Item Details', true, $session->isLoggedIn(), $session);
                             </form>
                         <?php endif; ?>
                         <?php if ($item->user_id == $_SESSION['user_id'] || $user->is_admin): ?>
+                            <form action="../pages/edit_item.php" method="get">
+                                <input type="hidden" name="item_id" value="<?= htmlspecialchars($item->id) ?>">
+                                <button type="submit" class="edit-button">Edit Item</button>
+                            </form>
                             <form action="../actions/action_delete_item.php" method="post">
                                 <input type="hidden" name="item_id" value="<?= htmlspecialchars($item->id) ?>">
                                 <input type="hidden" name="user_id" value="<?= htmlspecialchars($item->user_id) ?>">
-                                <button type="submit">Delete Item</button>
+                                <button type="submit" class="delete-button">Delete Item</button>
                             </form>
                         <?php endif; ?>
                     <?php endif; ?>

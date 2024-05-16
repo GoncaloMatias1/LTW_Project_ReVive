@@ -36,31 +36,30 @@ drawHeader('Item Details', true, $session->isLoggedIn(), $session);
                 <p>Price: $<?= htmlspecialchars(number_format($item->price, 2)) ?></p>
                 <div class="buttons">
                     <?php if ($session->isLoggedIn()): ?>
-                        <form action="../pages/add_to_favorites.php" method="post">
-                            <input type="hidden" name="item_id" value="<?= htmlspecialchars($item->id) ?>">
-                            <button type="submit">Add to Favorites</button>
-                        </form>
-                    <?php endif; ?>
-
-                    <?php if ($session->isLoggedIn() && ($item->user_id == $_SESSION['user_id'] || $user->is_admin)): ?>
-                        <form action="../actions/action_delete_item.php" method="post">
-                            <input type="hidden" name="item_id" value="<?= htmlspecialchars($item->id) ?>">
-                            <input type="hidden" name="user_id" value="<?= htmlspecialchars($item->user_id) ?>">
-                            <button type="submit">Delete Item</button>
-                        </form>
-                    <?php endif; ?>
-                    <?php if ($session->isLoggedIn() && $item->user_id != $_SESSION['user_id']): ?>
-                        <form action="message.php" method="get">
-                            <input type="hidden" name="item_id" value="<?= htmlspecialchars($item->id) ?>">
-                            <input type="hidden" name="receiver_id" value="<?= htmlspecialchars($item->user_id) ?>">
-                            <button type="submit">Contact Seller</button>
-                        </form>
+                        <?php if ($item->user_id != $_SESSION['user_id']): ?>
+                            <form action="../pages/add_to_favorites.php" method="post">
+                                <input type="hidden" name="item_id" value="<?= htmlspecialchars($item->id) ?>">
+                                <button type="submit">Add to Favorites</button>
+                            </form>
+                            <form action="message.php" method="get">
+                                <input type="hidden" name="item_id" value="<?= htmlspecialchars($item->id) ?>">
+                                <input type="hidden" name="receiver_id" value="<?= htmlspecialchars($item->user_id) ?>">
+                                <button type="submit">Contact Seller</button>
+                            </form>
+                        <?php endif; ?>
+                        <?php if ($item->user_id == $_SESSION['user_id'] || $user->is_admin): ?>
+                            <form action="../actions/action_delete_item.php" method="post">
+                                <input type="hidden" name="item_id" value="<?= htmlspecialchars($item->id) ?>">
+                                <input type="hidden" name="user_id" value="<?= htmlspecialchars($item->user_id) ?>">
+                                <button type="submit">Delete Item</button>
+                            </form>
+                        <?php endif; ?>
                     <?php endif; ?>
                 </div>
             </div>
         </div>
 
-        <?php if ($session->isLoggedIn()): ?>
+        <?php if ($session->isLoggedIn() && $item->user_id != $_SESSION['user_id']): ?>
             <div class="reviews-checkout">
                 <div class="reviews">
                     <h2>Submit a Review</h2>

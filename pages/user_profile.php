@@ -56,7 +56,7 @@ drawHeader($user->username . "'s Profile", true, $session->isLoggedIn(), $sessio
         <?php endif; ?>
     </div>
 
-    <h3>Sold Items</h3>
+    <h3>Items for Sale</h3>
     <div class="sold-items">
         <?php if (count($soldItems) > 0): ?>
             <ul>
@@ -64,7 +64,6 @@ drawHeader($user->username . "'s Profile", true, $session->isLoggedIn(), $sessio
                     <li>
                         <p><strong>Title:</strong> <?php echo htmlspecialchars($item->title); ?></p>
                         <p><strong>Price:</strong> $<?php echo htmlspecialchars(number_format($item->price, 2)); ?></p>
-                        <p><strong>Sold on:</strong> <?php echo htmlspecialchars($item->sold_date ?? 'N/A'); ?></p>
                     </li>
                 <?php endforeach; ?>
             </ul>

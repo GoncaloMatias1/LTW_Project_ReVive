@@ -33,6 +33,7 @@ drawHeader('My Items', true, false, $session);
                         <a href="edit_item.php?item_id=<?= $item->id ?>" class="edit-button">Edit</a>
                         <form action="../actions/action_delete_item.php" method="post" class="delete-form">
                             <input type="hidden" name="item_id" value="<?= htmlspecialchars($item->id) ?>">
+                            <input type="hidden" name="user_id" value="<?= htmlspecialchars($user_id) ?>">
                             <button type="submit" class="delete-button">Delete</button>
                         </form>
                     </div>

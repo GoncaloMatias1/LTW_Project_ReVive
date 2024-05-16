@@ -85,7 +85,7 @@ drawHeader('Item Details', true, $session->isLoggedIn(), $session);
                     <div class="seller-info">
                         <h3>Seller Information</h3>
                         <?php if ($seller): ?>
-                            <p>Name: <?= htmlspecialchars($seller->name) ?></p>
+                            <p>Name: <a href="user_profile.php?user_id=<?= htmlspecialchars($seller->id) ?>"><?= htmlspecialchars($seller->name) ?></a></p>
                             <p>Username: <?= htmlspecialchars($seller->username) ?></p>
                         <?php else: ?>
                             <p>Seller information not available.</p>

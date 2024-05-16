@@ -9,6 +9,7 @@ class Item {
     public string $city;
     public string $price;
     public string $image_path;
+    public ?string $sold_date; 
 
     public function __construct(array $data = []) {
         $this->id = $data['item_id'] ?? 0;
@@ -19,6 +20,7 @@ class Item {
         $this->city = $data['city'] ?? '';
         $this->price = $data['price'] ?? 0.0;
         $this->image_path = $data['image_path'] ?? '';
+        $this->sold_date = $data['sold_date'] ?? null;
     }    
 
     static function getAllItems(PDO $db): array {

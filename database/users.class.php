@@ -90,8 +90,7 @@ class Users {
     }    
     
     public static function makeAdmin(PDO $db, int $user_id){
-        $query = "UPDATE users SET is_admin = 1";
-        $query .= " WHERE user_id = ?";
+        $query = "UPDATE users SET is_admin = 1 WHERE user_id = ?";
         $params[] = $user_id;
 
         $stmt = $db-> prepare($query);
@@ -99,8 +98,7 @@ class Users {
     }
 
     public static function removeAdmin(PDO $db, int $user_id){
-        $query = "UPDATE users SET is_admin = 0";
-        $query .= " WHERE user_id = ?";
+        $query = "UPDATE users SET is_admin = 0 WHERE user_id = ?";
         $params[] = $user_id;
 
         $stmt = $db-> prepare($query);

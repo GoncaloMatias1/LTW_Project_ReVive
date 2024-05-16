@@ -14,6 +14,9 @@ $user = Users::getUser($db, $user_id);
 $reviews = Reviews::getReviewsByUser($db, $user_id);
 $soldItems = Item::getItemsByUser($db, $user_id);  // assuming items marked as sold
 
+$loggedUser_id = $_SESSION['user_id'];
+$loggedUser = Users::getUser($db, $loggedUser_id);
+
 drawHeader($user->username . "'s Profile", true, $session->isLoggedIn(), $session);
 ?>
 
@@ -25,6 +28,16 @@ drawHeader($user->username . "'s Profile", true, $session->isLoggedIn(), $sessio
         <p><strong>Name:</strong> <?php echo htmlspecialchars($user->name); ?></p>
         <p><strong>Email:</strong> <?php echo htmlspecialchars($user->email); ?></p>
     </div>
+    <?php if ($loggedUser->is_admin && !$user->is_admin): ?>
+        <form action="../actions/action_make_admin.php" method="POST">
+            <input type="hidden" name="user_id" value="<?= htmlspecialchars($user_id) ?>">
+            <button type="submit">Make Admin</button>
+    <?php endif; ?>
+    <?php if ($loggedUser->is_admin && $user->is_admin): ?>
+        <form action="../actions/action_remove_admin.php" method="POST">
+            <input type="hidden" name="user_id" value="<?= htmlspecialchars($user_id) ?>">
+            <button type="submit">Remove Admin</button>
+    <?php endif; ?>
     
     <h3>Reviews</h3>
     <div class="user-reviews">

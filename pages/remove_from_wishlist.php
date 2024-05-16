@@ -14,10 +14,10 @@ if (!$session->isLoggedIn()) {
 $itemId = intval($_GET['item_id'] ?? 0);
 
 if ($itemId && Wishlist::removeFromWishlist($db, $_SESSION['user_id'], $itemId)) {
-    header("Location: favorites.php?success=removed");
+    header("Location: wishlist.php?success=removed");
     exit();
 } else {
-    header("Location: favorites.php?error=unable_to_remove");
+    header("Location: wishlist.php?error=unable_to_remove");
     exit();
 }
 ?>

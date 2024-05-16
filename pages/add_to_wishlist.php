@@ -14,10 +14,10 @@ if (!$session->isLoggedIn()) {
 $itemId = intval($_POST['item_id'] ?? 0);
 
 if ($itemId && Wishlist::addToWishlist($db, $_SESSION['user_id'], $itemId)) {
-    header("Location: favorites.php");
+    header("Location: wishlist.php");
     exit();
 } else {
-    header("Location: item.php?id=" . $itemId . "&error=unable_to_add_favorite");
+    header("Location: item.php?id=" . $itemId . "&error=unable_to_add_wishlist");
     exit();
 }
 ?>

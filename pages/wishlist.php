@@ -15,16 +15,16 @@ if (!$session->isLoggedIn()) {
 
 $wishlistItems = Wishlist::getUserWishlist($db, $_SESSION['user_id']);
 
-drawHeader('Your Favorites', true, true, $session);
+drawHeader('Your Wishlist', true, true, $session);
 ?>
 
-<link rel="stylesheet" type="text/css" href="../styles/favorites.css">
+<link rel="stylesheet" type="text/css" href="../styles/wishlist.css">
 
 <div class="wishlist-container">
     <?php if (count($wishlistItems) > 0): ?>
-        <div class="favorite-items">
+        <div class="wishlist-items">
             <?php foreach ($wishlistItems as $item): ?>
-                <div class="favorite-item">
+                <div class="wishlist-item">
                     <a href="item.php?id=<?= $item['item_id'] ?>">
                         <img src="<?= htmlspecialchars($item['image_path']) ?>" alt="<?= htmlspecialchars($item['title']) ?>">
                         <h3><?= htmlspecialchars($item['title']) ?></h3>
@@ -34,7 +34,7 @@ drawHeader('Your Favorites', true, true, $session);
             <?php endforeach; ?>
         </div>
     <?php else: ?>
-        <p>You haven't added any favorites yet.</p>
+        <p>No wishlist yet.</p>
     <?php endif; ?>
 </div>
 

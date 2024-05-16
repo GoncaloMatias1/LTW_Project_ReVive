@@ -37,9 +37,9 @@ drawHeader('Item Details', true, $session->isLoggedIn(), $session);
                 <div class="buttons">
                     <?php if ($session->isLoggedIn()): ?>
                         <?php if ($item->user_id != $_SESSION['user_id']): ?>
-                            <form action="../pages/add_to_favorites.php" method="post">
+                            <form action="../pages/add_to_wishlist.php" method="post">
                                 <input type="hidden" name="item_id" value="<?= htmlspecialchars($item->id) ?>">
-                                <button type="submit">Add to Favorites</button>
+                                <button type="submit">Add to Wishlist</button>
                             </form>
                             <form action="message.php" method="get">
                                 <input type="hidden" name="item_id" value="<?= htmlspecialchars($item->id) ?>">

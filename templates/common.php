@@ -57,7 +57,7 @@ function drawHeader($title = 'reVive : Buy and Sell', $includeTopBar = false, $i
                             <a href="../pages/profile.php" class="profile-icon">Profile</a>
                         <?php endif; ?>
                         <a href="../pages/my_items.php">My Items</a>
-                        <a href="../pages/favorites.php">Favorites</a>
+                        <a href="../pages/wishlist.php">Wishlist</a>
                         <a href="../pages/categories.php">Categories</a> 
                         <?php $unreadCount = $session->getUnreadMessageCount(getDatabaseConnection()); ?>
                         <a href="../pages/conversations.php">Messages<?= $unreadCount > 0 ? " ($unreadCount)" : "" ?></a>

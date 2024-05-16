@@ -9,20 +9,36 @@ $db = getDatabaseConnection();
 
 $category_id = filter_var($_GET['category_id'] ?? 0, FILTER_VALIDATE_INT);
 
-if ($category_id > 0) {
-    $items = Item::getItemsByCategory($db, $category_id);
-    if (empty($items)) {
-        echo "No items found for this category.";
-    } else {
-        drawHeader('Category Items', true, $session->isLoggedIn(), $session);
-        echo "<div class='items-container'>";
-        foreach ($items as $item) {
-            echo "<div class='item'><h3>" . htmlspecialchars($item->title) . "</h3></div>";
+drawHeader('Category Items', true, $session->isLoggedIn(), $session);
+?>
+
+<link rel="stylesheet" type="text/css" href="../styles/category_items.css">
+
+<div class="items-container">
+    <?php
+    if ($category_id > 0) {
+        $items = Item::getItemsByCategory($db, $category_id);
+        if (empty($items)) {
+            echo "<p>No items found for this category.</p>";
+        } else {
+            echo "<div class='items-list'>";
+            foreach ($items as $item) {
+                echo "<div class='item'>
+                        <a href='item.php?id=" . htmlspecialchars($item->id) . "'>
+                            <img src='" . htmlspecialchars($item->image_path) . "' alt='" . htmlspecialchars($item->title) . "'>
+                            <h3>" . htmlspecialchars($item->title) . "</h3>
+                            <p>Price: $" . htmlspecialchars(number_format($item->price, 2)) . "</p>
+                        </a>
+                    </div>";
+            }
+            echo "</div>";
         }
-        echo "</div>";
-        drawFooter();
+    } else {
+        echo "<p>Invalid category ID.</p>";
     }
-} else {
-    echo "Invalid category ID.";
-    drawFooter();
-}
+    ?>
+</div>
+
+<?php
+drawFooter();
+?>

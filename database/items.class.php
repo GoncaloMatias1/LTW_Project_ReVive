@@ -7,9 +7,9 @@ class Item {
     public string $title;
     public string $description;
     public string $city;
-    public string $price;
+    public float $price;
     public string $image_path;
-    public ?string $sold_date; 
+    public ?string $sold_date;
 
     public function __construct(array $data = []) {
         $this->id = $data['item_id'] ?? 0;
@@ -18,10 +18,10 @@ class Item {
         $this->title = $data['title'] ?? '';
         $this->description = $data['description'] ?? '';
         $this->city = $data['city'] ?? '';
-        $this->price = $data['price'] ?? 0.0;
+        $this->price = isset($data['price']) ? (float)$data['price'] : 0.0;
         $this->image_path = $data['image_path'] ?? '';
         $this->sold_date = $data['sold_date'] ?? null;
-    }    
+    }
 
     static function getAllItems(PDO $db): array {
         $stmt = $db->prepare('SELECT * FROM Items');
@@ -32,18 +32,11 @@ class Item {
         }
         return $items;
     }
-    
 
     static function getItemById(PDO $db, int $id): ?Item {
         $stmt = $db->prepare('SELECT * FROM Items WHERE item_id = ?');
-        if (!$stmt) {
-            die("Prepare failed: " . $db->errorInfo()[2]);
-        }
         $stmt->execute([$id]);
-        if (!$stmt) {
-            die("Execute failed: " . $db->errorInfo()[2]);
-        }
-        $item = $stmt->fetch();
+        $item = $stmt->fetch(PDO::FETCH_ASSOC);
         return $item ? new Item($item) : null;
     }
 
@@ -68,9 +61,13 @@ class Item {
     public static function getItemsByCategory(PDO $db, int $category_id): array {
         $stmt = $db->prepare("SELECT * FROM Items WHERE category_id = ?");
         $stmt->execute([$category_id]);
-        return $stmt->fetchAll(PDO::FETCH_CLASS, 'Item');
+        $items = [];
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $items[] = new Item($row);
+        }
+        return $items;
     }
-    
+
     public static function getItemsByUser(PDO $db, int $user_id): array {
         $stmt = $db->prepare('SELECT * FROM Items WHERE user_id = ?');
         $stmt->execute([$user_id]);
@@ -96,7 +93,6 @@ class Item {
             $this->id,
             $this->user_id
         ]);
-    }    
+    }
 }
-
 ?>

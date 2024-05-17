@@ -64,11 +64,23 @@ drawHeader('Checkout', true, $session->isLoggedIn(), $session);
             </fieldset>
 
             <label for="paymentMethod">Payment Method:</label>
-            <select id="paymentMethod" name="paymentMethod">
+            <select id="paymentMethod" name="paymentMethod" onchange="togglePaymentFields()">
+                <option value="apple_pay">Apple Pay</option>
                 <option value="credit_card">Credit Card</option>
                 <option value="paypal">PayPal</option>
                 <option value="debit_card">Debit Card</option>
             </select>
+
+            <div id="cardInfo" style="display: none;">
+                <label for="cardNumber">Card Number:</label>
+                <input type="text" id="cardNumber" name="cardNumber">
+
+                <label for="cardExpiry">Expiry Date:</label>
+                <input type="text" id="cardExpiry" name="cardExpiry">
+
+                <label for="cardCVV">CVV:</label>
+                <input type="text" id="cardCVV" name="cardCVV">
+            </div>
 
             <button type="submit">Confirm Purchase</button>
         </form>
@@ -76,6 +88,22 @@ drawHeader('Checkout', true, $session->isLoggedIn(), $session);
         <p>Item not found.</p>
     <?php endif; ?>
 </div>
+
+<script>
+function togglePaymentFields() {
+    const paymentMethod = document.getElementById('paymentMethod').value;
+    const cardInfo = document.getElementById('cardInfo');
+    if (paymentMethod === 'credit_card' || paymentMethod === 'debit_card') {
+        cardInfo.style.display = 'block';
+    } else {
+        cardInfo.style.display = 'none';
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    togglePaymentFields();
+});
+</script>
 
 <?php
 drawFooter();

@@ -1,78 +1,74 @@
 .profile-container {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 40px auto;
     padding: 20px;
     background: #fff;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     border-radius: 10px;
-    text-align: left;
 }
 
-.profile-details h2 {
-    color: #333;
-    font-size: 24px;
+.profile-header {
     text-align: center;
     margin-bottom: 20px;
 }
 
-.profile-details p {
+.profile-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.profile-details, .user-reviews, .sold-items {
+    background: #f7f7f7;
+    padding: 20px;
+    border-radius: 8px;
+    flex: 1;
+    min-width: 300px;
+    max-width: 45%;
+}
+
+.profile-details p, .user-reviews p, .sold-items p {
     font-size: 16px;
     color: #666;
     line-height: 1.5;
     margin-bottom: 10px;
 }
 
-.profile-details a {
+.profile-details form {
+    margin-top: 20px;
+}
+
+button {
     display: inline-block;
     background-color: #007aff;
     color: white;
     padding: 10px 15px;
-    margin: 20px auto;
     border: none;
     cursor: pointer;
     font-size: 18px;
     border-radius: 5px;
     transition: background-color 0.3s;
-    text-align: center;
-    text-decoration: none;
 }
 
-.profile-details a:hover {
+button:hover {
     background-color: #0056b3;
 }
 
-.user-reviews ul {
+.user-reviews ul, .sold-items ul {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
-.user-reviews li {
-    margin-bottom: 20px;
+.user-reviews li, .sold-items li {
+    margin-bottom: 10px;
     padding: 10px;
-    background-color: #f7f7f7;
+    background-color: #fff;
+    border: 1px solid #ddd;
     border-radius: 8px;
 }
 
-.user-reviews strong {
+.user-reviews strong, .sold-items strong {
     color: #333;
-}
-
-.sold-items ul {
-    list-style: none;
-    padding: 0;
-}
-
-.sold-items li {
-    margin-bottom: 20px;
-    padding: 10px;
-    background-color: #f7f7f7;
-    border-radius: 8px;
-}
-
-.sold-items strong {
-    color: #333;
-}
-
-.profile-details h2 {
-    text-align: center;
 }

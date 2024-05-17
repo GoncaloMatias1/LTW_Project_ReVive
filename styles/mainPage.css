@@ -54,6 +54,11 @@ footer {
     margin-bottom: 20px;
     text-align: left;
     transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 400px; 
+    max-height: 500px;
 }
 
 .item:hover {
@@ -63,18 +68,27 @@ footer {
 .item img {
     width: 100%;
     height: auto;
+    max-height: 200px;
+    object-fit: cover;
     border-radius: 5px;
     margin-bottom: 10px;
 }
 
 .item h3, .item p, .item span {
     margin: 5px 0;
-    color: black; 
+    color: black;
 }
 
 .item a {
-    text-decoration: none; 
-    color: inherit; 
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.item p {
+    flex-grow: 1;
 }
 
 .item button {
@@ -86,6 +100,7 @@ footer {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin-top: auto;
 }
 
 .item button:hover {

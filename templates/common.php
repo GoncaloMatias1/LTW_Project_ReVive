@@ -25,14 +25,14 @@ function drawHeader($title = 'reVive : Buy and Sell', $includeTopBar = false, $i
                 <div class="top-bar-right">
                     <?php if ($session && $session->isLoggedIn()): ?>
                         <a href="../pages/create_item.php" class="profile-icon">Sell Item</a>
+                        <a href="../pages/categories.php">Categories</a>
+                        <a href="../pages/my_items.php">My Items</a>
+                        <a href="../pages/wishlist.php">Wishlist</a> 
+                        <?php $unreadCount = $session->getUnreadMessageCount(getDatabaseConnection()); ?>
+                        <a href="../pages/conversations.php">Messages<?= $unreadCount > 0 ? " ($unreadCount)" : "" ?></a>
                         <?php if ($includeProfileIcon): ?>
                             <a href="../pages/profile.php" class="profile-icon">Profile</a>
                         <?php endif; ?>
-                        <a href="../pages/my_items.php">My Items</a>
-                        <a href="../pages/wishlist.php">Wishlist</a>
-                        <a href="../pages/categories.php">Categories</a> 
-                        <?php $unreadCount = $session->getUnreadMessageCount(getDatabaseConnection()); ?>
-                        <a href="../pages/conversations.php">Messages<?= $unreadCount > 0 ? " ($unreadCount)" : "" ?></a>
                         <a href="../actions/action_logout.php">Logout</a>
                     <?php else: ?>
                         <a href="../pages/login.php">Login</a>

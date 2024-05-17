@@ -68,7 +68,6 @@ drawHeader('Item Details', true, $session->isLoggedIn(), $session);
         <?php if ($session->isLoggedIn() && $item->user_id != $_SESSION['user_id']): ?>
             <div class="reviews-checkout">
                 <div class="reviews">
-                    <h2>Submit a Review</h2>
                     <form action="submit_review.php" method="post">
                         <input type="hidden" name="item_id" value="<?= htmlspecialchars($item->id) ?>">
                         <label for="rating">Rating (1-5):</label>
@@ -79,7 +78,6 @@ drawHeader('Item Details', true, $session->isLoggedIn(), $session);
                     </form>
                 </div>
                 <div class="checkout">
-                    <h2>Proceed to Checkout</h2>
                     <form action="checkout.php" method="post">
                         <input type="hidden" name="item_id" value="<?= htmlspecialchars($item->id) ?>">
                         <button type="submit">Proceed to Checkout</button>

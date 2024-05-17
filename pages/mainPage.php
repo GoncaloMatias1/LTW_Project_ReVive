@@ -17,7 +17,7 @@ drawHeader('Main Page', true, true, $session);
 ?>
 
 <div class="content-container">
-    <h2>Featured Items</h2>
+    <h2>Welcome to reVive!</h2>
     <div class="items-list">
         <?php foreach ($items as $item): ?>
             <div class="item">

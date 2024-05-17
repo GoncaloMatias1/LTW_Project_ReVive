@@ -12,7 +12,7 @@ $db = getDatabaseConnection();
 $user_id = intval($_GET['user_id']);
 $user = Users::getUser($db, $user_id);
 $reviews = Reviews::getReviewsByUser($db, $user_id);
-$soldItems = Item::getItemsByUser($db, $user_id);  // assuming items marked as sold
+$soldItems = Item::getItemsByUser($db, $user_id);
 
 $loggedUser_id = $_SESSION['user_id'];
 $loggedUser = Users::getUser($db, $loggedUser_id);
@@ -20,7 +20,7 @@ $loggedUser = Users::getUser($db, $loggedUser_id);
 drawHeader($user->username . "'s Profile", true, $session->isLoggedIn(), $session);
 ?>
 
-<link rel="stylesheet" type="text/css" href="../styles/profile.css">
+<link rel="stylesheet" type="text/css" href="../styles/user_profile.css">
 
 <div class="profile-container">
     <h2>Profile of <?php echo htmlspecialchars($user->username); ?></h2>

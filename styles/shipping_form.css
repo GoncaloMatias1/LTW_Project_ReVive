@@ -1,0 +1,86 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f9f9f9;
+}
+
+.shipping-form {
+    max-width: 800px;
+    width: 100%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    margin: 20px;
+}
+
+.shipping-form h1 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.shipping-form p {
+    font-size: 14px;
+    margin: 5px 0;
+    color: #333;
+}
+
+.shipping-form hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 20px 0;
+}
+
+.shipping-form table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.shipping-form table th,
+.shipping-form table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.shipping-form table th {
+    background-color: #f7f7f7;
+}
+
+.shipping-form .total-row {
+    font-weight: bold;
+}
+
+@media print {
+    body {
+        background-color: #fff;
+    }
+    
+    .shipping-form {
+        width: 100%;
+        box-shadow: none;
+        border-radius: 0;
+        padding: 0;
+        margin: 0;
+    }
+
+    .shipping-form h1 {
+        font-size: 20px;
+    }
+
+    .shipping-form p {
+        font-size: 12px;
+    }
+
+    .shipping-form table th,
+    .shipping-form table td {
+        font-size: 12px;
+    }
+}

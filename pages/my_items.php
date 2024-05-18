@@ -2,6 +2,7 @@
 require_once(__DIR__ . '/../utils/session.php');
 require_once(__DIR__ . '/../database/connection.db.php');
 require_once(__DIR__ . '/../database/items.class.php');
+require_once(__DIR__ . '/../database/transactions.class.php');
 require_once(__DIR__ . '/../templates/common.php');
 
 $session = new Session();
@@ -37,6 +38,12 @@ drawHeader('My Items', true, false, $session);
                             <button type="submit" class="delete-button">Delete</button>
                         </form>
                     </div>
+                    <?php if ($item->sold_date): ?>
+                        <div class="sold-notification">
+                            <p>This item has been sold!</p>
+                            <a href="print_shipping_form.php?transaction_id=<?= htmlspecialchars($item->id) ?>" class="print-button">Print Shipping Form</a>
+                        </div>
+                    <?php endif; ?>
                 </div>
             <?php endforeach; ?>
         </div>

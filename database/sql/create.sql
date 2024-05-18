@@ -31,6 +31,7 @@ CREATE TABLE items (
     city TEXT NOT NULL,
     price REAL NOT NULL,
     image_path TEXT,
+    sold_date DATETIME, 
     FOREIGN KEY (user_id) REFERENCES users(user_id),
     FOREIGN KEY (category_id) REFERENCES categories(category_id)
 );

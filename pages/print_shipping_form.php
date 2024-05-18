@@ -20,6 +20,10 @@ if ($transaction) {
     $item = Item::getItemById($db, $transaction->item_id);
     $buyer = Users::getUser($db, $transaction->buyer_id);
     $seller = Users::getUser($db, $transaction->seller_id);
+
+    // Construir o endereço do comprador
+    $address = "{$buyer->street}, {$buyer->door}, {$buyer->city}, {$buyer->state}, {$buyer->postalCode}";
+
     ?>
     <!DOCTYPE html>
     <html>
@@ -32,7 +36,7 @@ if ($transaction) {
             <h1>Packing Slip</h1>
             <p><strong>Order date:</strong> <?= htmlspecialchars($transaction->transaction_date) ?></p>
             <p><strong>Ship to:</strong> <?= htmlspecialchars($buyer->name) ?></p>
-            <p><strong>Address:</strong> <?= htmlspecialchars($buyer->address) ?></p>
+            <p><strong>Address:</strong> <?= htmlspecialchars($address) ?></p>
             <p><strong>Email:</strong> <?= htmlspecialchars($buyer->email) ?></p>
             <hr>
             <table>

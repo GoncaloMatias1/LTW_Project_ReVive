@@ -11,7 +11,7 @@ drawHeader('Searched Items', true, $session->isLoggedIn(), $session);
 
 ?>
 
-<link rel="stylesheet" type="text/css" href="../styles/category_items.css">
+<link rel="stylesheet" type="text/css" href="../styles/search_page.css">
 
 <div class = "items-container">
     <?php

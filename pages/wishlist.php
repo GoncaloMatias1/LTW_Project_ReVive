@@ -28,6 +28,7 @@ drawHeader('Your Wishlist', true, true, $session);
                     <a href="item.php?id=<?= $item['item_id'] ?>">
                         <img src="<?= htmlspecialchars($item['image_path']) ?>" alt="<?= htmlspecialchars($item['title']) ?>">
                         <h3><?= htmlspecialchars($item['title']) ?></h3>
+                        <p class="price">Price: $<?= htmlspecialchars(number_format($item['price'], 2)) ?></p>
                     </a>
                     <a href="remove_from_wishlist.php?item_id=<?= $item['item_id'] ?>" class="remove-button">Remove</a>
                 </div>

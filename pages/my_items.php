@@ -28,6 +28,7 @@ drawHeader('My Items', true, false, $session);
                     <a href="item.php?id=<?= $item->id ?>">
                         <img src="<?= htmlspecialchars($item->image_path) ?>" alt="<?= htmlspecialchars($item->title) ?>">
                         <h3><?= htmlspecialchars($item->title) ?></h3>
+                        <p class='price'>Price: $<?= htmlspecialchars(number_format($item->price, 2)) ?></p>
                     </a>
                     <div class="buttons">
                         <a href="edit_item.php?item_id=<?= $item->id ?>" class="edit-button">Edit</a>

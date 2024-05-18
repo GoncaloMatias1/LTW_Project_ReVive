@@ -20,14 +20,14 @@ header, footer {
     padding-top: 50px;
 }
 
-form {
+.register-container form {
     background: #f7f7f7;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     padding: 20px;
     border-radius: 8px;
 }
 
-form h2 {
+.register-container form h2 {
     text-align: center;
 }
 

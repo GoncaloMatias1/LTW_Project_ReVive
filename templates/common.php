@@ -24,7 +24,7 @@ function drawHeader($title = 'reVive : Buy and Sell', $includeTopBar = false, $i
                     <form action="search_page.php" method="POST">
                         <input type="text" name="search" placeholder="Search">
                         <button type="submit" name="submit-search"> Search</button>
-                    </form>
+                    </form>             
                 </div>
                 <div class="top-bar-right">
                     <?php if ($session && $session->isLoggedIn()): ?>

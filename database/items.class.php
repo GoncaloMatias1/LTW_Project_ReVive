@@ -24,7 +24,7 @@ class Item {
     }
 
     static function getAllItems(PDO $db): array {
-        $stmt = $db->prepare('SELECT * FROM Items');
+        $stmt = $db->prepare('SELECT * FROM items WHERE sold_date IS NULL');
         $stmt->execute();
         $items = [];
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -34,14 +34,14 @@ class Item {
     }
 
     static function getItemById(PDO $db, int $id): ?Item {
-        $stmt = $db->prepare('SELECT * FROM Items WHERE item_id = ?');
+        $stmt = $db->prepare('SELECT * FROM items WHERE item_id = ?');
         $stmt->execute([$id]);
         $item = $stmt->fetch(PDO::FETCH_ASSOC);
         return $item ? new Item($item) : null;
     }
 
     public function addItem(PDO $db): bool {
-        $stmt = $db->prepare("INSERT INTO Items (user_id, category_id, title, description, city, price, image_path) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmt = $db->prepare("INSERT INTO items (user_id, category_id, title, description, city, price, image_path) VALUES (?, ?, ?, ?, ?, ?, ?)");
         return $stmt->execute([
             $this->user_id,
             $this->category_id,
@@ -54,12 +54,12 @@ class Item {
     }
 
     public static function deleteItem(PDO $db, int $itemId, int $userId): bool {
-        $stmt = $db->prepare("DELETE FROM Items WHERE item_id = ? AND user_id = ?");
+        $stmt = $db->prepare("DELETE FROM items WHERE item_id = ? AND user_id = ?");
         return $stmt->execute([$itemId, $userId]);
     }
 
     public static function getItemsByCategory(PDO $db, int $category_id): array {
-        $stmt = $db->prepare("SELECT * FROM Items WHERE category_id = ?");
+        $stmt = $db->prepare("SELECT * FROM items WHERE category_id = ? AND sold_date IS NULL");
         $stmt->execute([$category_id]);
         $items = [];
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -69,7 +69,7 @@ class Item {
     }
 
     public static function getItemsByUser(PDO $db, int $user_id): array {
-        $stmt = $db->prepare('SELECT * FROM Items WHERE user_id = ?');
+        $stmt = $db->prepare('SELECT * FROM items WHERE user_id = ?');
         $stmt->execute([$user_id]);
         $items = [];
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -79,7 +79,7 @@ class Item {
     }
 
     public static function getItemsBySearch(PDO $db, string $search): array {
-        $stmt = $db->prepare("SELECT * FROM Items WHERE title LIKE ? OR description LIKE ?");
+        $stmt = $db->prepare("SELECT * FROM items WHERE (title LIKE ? OR description LIKE ?) AND sold_date IS NULL");
         $stmt->execute(["%$search%", "%$search%"]);
         $items = [];
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -90,7 +90,7 @@ class Item {
 
     public function updateItem(PDO $db): bool {
         $stmt = $db->prepare("
-            UPDATE Items SET title = ?, description = ?, price = ?, city = ?, category_id = ?, image_path = ?
+            UPDATE items SET title = ?, description = ?, price = ?, city = ?, category_id = ?, image_path = ?
             WHERE item_id = ? AND user_id = ?
         ");
         return $stmt->execute([

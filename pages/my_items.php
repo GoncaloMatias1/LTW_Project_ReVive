@@ -16,7 +16,7 @@ if (!$session->isLoggedIn()) {
 $user_id = $_SESSION['user_id'];
 $items = Item::getItemsByUser($db, $user_id);
 
-drawHeader('My Items', true, false, $session);
+drawHeader('My Items', true, true, $session); 
 ?>
 
 <link rel="stylesheet" type="text/css" href="../styles/my_items.css">

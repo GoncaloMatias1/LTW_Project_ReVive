@@ -17,7 +17,7 @@ $user_id = $_SESSION['user_id'];
 $user = Users::getUser($db, $user_id);
 $reviews = Reviews::getReviewsByUser($db, $user_id);
 
-drawHeader('Profile', true, false, $session);
+drawHeader('Profile', true, true, $session); 
 ?>
 
 <link rel="stylesheet" type="text/css" href="../styles/profile.css">

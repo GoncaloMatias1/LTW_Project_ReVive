@@ -78,6 +78,16 @@ class Item {
         return $items;
     }
 
+    public static function getItemsBySearch(PDO $db, string $search): array {
+        $stmt = $db->prepare("SELECT * FROM Items WHERE title LIKE ? OR description LIKE ?");
+        $stmt->execute(["%$search%", "%$search%"]);
+        $items = [];
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $items[] = new Item($row);
+        }
+        return $items;
+    }
+
     public function updateItem(PDO $db): bool {
         $stmt = $db->prepare("
             UPDATE Items SET title = ?, description = ?, price = ?, city = ?, category_id = ?, image_path = ?

@@ -14,7 +14,12 @@ CREATE TABLE users (
     username TEXT NOT NULL UNIQUE,
     password TEXT NOT NULL,
     email TEXT NOT NULL UNIQUE,
-    is_admin BOOLEAN NOT NULL DEFAULT 0
+    is_admin BOOLEAN NOT NULL DEFAULT 0,
+    street TEXT,
+    door TEXT,
+    city TEXT,
+    state TEXT,
+    postalCode TEXT
 );
 
 CREATE TABLE categories (

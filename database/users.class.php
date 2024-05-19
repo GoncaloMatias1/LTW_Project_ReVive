@@ -84,7 +84,6 @@ class Users {
             return null;
         }
     }
-     
 
     public static function insertUser(PDO $db, string $name, string $username, string $email, string $password, bool $is_admin = false): array {
         $stmt = $db->prepare('SELECT COUNT(*) FROM users WHERE email = ?');
@@ -122,8 +121,8 @@ class Users {
         
         $stmt = $db->prepare($query);
         return $stmt->execute($params);
-    }    
-    
+    }
+
     public static function makeAdmin(PDO $db, int $user_id){
         $query = "UPDATE users SET is_admin = 1 WHERE user_id = ?";
         $params[] = $user_id;

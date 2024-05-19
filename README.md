@@ -1,44 +1,81 @@
-# LTW Project 2024 - Web Marketplace for Pre-Loved Items
+# ReVive
 
-## Description
+## Group ltw01g02
 
-This repository contains the source code for the LTW Project 2024. Our web application facilitates the buying and selling of pre-loved items, providing users with a platform to easily list, browse, and transact seamlessly. The website boasts robust search and filter capabilities, detailed item descriptions, and a comprehensive user feedback system.
+- Gonçalo Matias (up202108703) 40%
+- Pedro Plácido (up202107987) 30%
+- Gonçalo Barroso (up202207832) 30%
 
-## Objective
+## Install Instructions
 
-The main objective of this project is to develop a user-friendly website for a second-hand marketplace. It's designed to provide a platform where users can perform as either sellers or buyers, offering a flexible experience for all.
+    git clone https://github.com/FEUP-LTW-2024/ltw-project-2024-ltw01g02
+    git checkout final-delivery-v1
+    sqlite3 database/database.db < database/script.sql
+    php -S localhost:9000
 
-## Features
 
-- **User Registration**: Allows users to create a new account.
-- **User Login and Logout**: Users can securely log in and out of their accounts.
-- **Profile Management**: Users can edit their personal profile details.
-- **Item Listings**: Sellers can list new items with comprehensive details.
-- **Inquiries and Transactions**: A system for buyers to engage with sellers regarding items.
-- **Admin Dashboard**: For platform management and oversight.
+## Screenshots
 
-## Technologies
+![Categories](images/categories.png)
+![Item](images/item.png)
+![Login](images/login.png)
+![Messages](images/messages.png)
+![My Items](images/my_items.png)
+![Price](images/price.png)
+![Profile](images/profile.png)
+![Register](images/register.png)
+![Sell](images/sell.png)
+![Wishlist](images/wishlist.png)
 
-- **HTML**: For structuring web content.
-- **CSS**: For styling, with a mobile-first responsive design.
-- **PHP**: For server-side scripting.
-- **JavaScript**: For client-side interactivity.
-- **Ajax/JSON**: For asynchronous web page updates.
-- **PDO/SQL**: For secure database interactions.
+## Implemented Features
 
-## Security
+**General**:
 
-We prioritize the security of our users and their data. Measures are in place to protect against SQL injection, XSS, CSRF, and to ensure secure password storage.
+- [x] Register a new account.
+- [x] Log in and out.
+- [x] Edit their profile, including their name, username, password, and email.
 
-## Code Quality
+**Sellers** should be able to:
 
-Our commitment is to maintain high standards of code quality, readability, and documentation.
+- [x] List new items, providing details such as category, brand, model, size, and condition, along with images.
+- [x] Track and manage their listed items.
+- [x] Respond to inquiries from buyers regarding their items and add further information if needed.
+- [x] Print shipping forms for items that have been sold.
 
-## Design
+**Buyers** should be able to:
 
-Our design philosophy is to keep the interface clean, intuitive, and consistent across all devices, especially mobile phones.
+- [x] Browse items using filters like category, price, and condition.
+- [x] Engage with sellers to ask questions or negotiate prices.
+- [x] Add items to a wishlist or shopping cart.
+- [x] Proceed to checkout with their shopping cart (simulate payment process).
 
-## Project Status
+**Admins** should be able to:
 
-This project is currently in the development phase.
+- [x] Elevate a user to admin status.
+- [x] Introduce new item categories, sizes, conditions, and other pertinent entities.
+- [x] Oversee and ensure the smooth operation of the entire system.
 
+**Security**:
+We have been careful with the following security aspects:
+
+- [x] **SQL injection**
+- [x] **Cross-Site Scripting (XSS)**
+- [x] **Cross-Site Request Forgery (CSRF)**
+
+**Password Storage Mechanism**: `password_hash` and `password_verify`
+
+**Aditional Requirements**:
+
+We also implemented the following additional requirements:
+
+- [x] **Rating and Review System**
+- [ ] **Promotional Features**
+- [ ] **Analytics Dashboard**
+- [x] **Multi-Currency Support**
+- [ ] **Item Swapping**
+- [ ] **API Integration**
+- [ ] **Dynamic Promotions**
+- [ ] **User Preferences**
+- [ ] **Shipping Costs**
+- [x] **Real-Time Messaging System**
+- [x] **UI for smaller screens**

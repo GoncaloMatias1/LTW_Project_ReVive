@@ -69,7 +69,6 @@ function drawFooter() {
                     <a href="../pages/cookies.php" class="bottom-bar-button">Cookie Policy</a>
                 </div>
             </div>
-            <p>LTW Buy & Sell &copy; 2024</p>
         </footer>
         <script>
         function toggleMenu() {

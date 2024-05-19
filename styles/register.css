@@ -5,12 +5,12 @@ body, html {
 }
 
 header h1, footer {
-    text-align: center; 
+    text-align: center;
 }
 
 header, footer {
     margin: 0;
-    padding: 1em 0; 
+    padding: 1em 0;
 }
 
 .register-container {
@@ -77,5 +77,13 @@ input[type="password"] {
         width: 95%;
         display: block;
         margin: auto;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    .register-button {
+        padding: 10px;
+        font-size: 14px;
     }
 }

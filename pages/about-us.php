@@ -6,6 +6,8 @@ $session = new Session();
 drawHeader('About Us', true, false, $session);
 ?>
 
+<link rel="stylesheet" type="text/css" href="../styles/about_us.css">
+
 <div class="content-container">
     <h2>About Us</h2>
     <p>Welcome to reVive!</p>

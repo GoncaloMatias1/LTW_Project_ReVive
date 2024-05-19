@@ -7,6 +7,8 @@ $session = new Session();
 drawHeader('Contact Us', true, false, $session);
 ?>
 
+<link rel="stylesheet" type="text/css" href="../styles/contact.css">
+
 <div class="content-container">
     <h2>Contact Us</h2>
     <p>Have a question, suggestion, or feedback for us? We'd love to hear from you!</p>

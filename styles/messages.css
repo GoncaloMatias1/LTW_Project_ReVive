@@ -1,3 +1,10 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
+
 .messages-container {
     max-width: 600px;
     margin: 40px auto;
@@ -7,15 +14,30 @@
     border-radius: 10px;
 }
 
+.messages-container h1 {
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
 .message-list {
     margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .message {
     background: #f7f7f7;
     padding: 10px;
-    margin-bottom: 10px;
     border-radius: 5px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.message:hover {
+    background: #e7e7e7;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .message p {
@@ -33,6 +55,7 @@
 form {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 textarea {
@@ -45,7 +68,6 @@ textarea {
 }
 
 button {
-    align-self: flex-end;
     background-color: #007aff;
     color: white;
     padding: 10px 20px;
@@ -58,4 +80,63 @@ button {
 
 button:hover {
     background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+    .messages-container {
+        margin: 20px;
+        padding: 15px;
+    }
+
+    .messages-container h1 {
+        font-size: 20px;
+    }
+
+    .message-list {
+        gap: 10px;
+    }
+
+    .message {
+        padding: 10px;
+    }
+
+    .message p {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .messages-container {
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .messages-container h1 {
+        font-size: 18px;
+    }
+
+    .message-list {
+        gap: 8px;
+    }
+
+    .message {
+        padding: 8px;
+    }
+
+    .message p {
+        font-size: 14px;
+    }
+
+    .message .timestamp {
+        font-size: 10px;
+    }
+
+    form {
+        gap: 8px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
 }

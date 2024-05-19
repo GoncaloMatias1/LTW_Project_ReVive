@@ -25,7 +25,7 @@ drawHeader('Order Confirmation', true, $session->isLoggedIn(), $session);
 <div class="confirmation-container">
     <h1>Order Confirmation</h1>
     <p>Thank you, <?= htmlspecialchars($fullname) ?>, for your purchase!</p>
-    <p>Your order for <?= htmlspecialchars($itemId) ?> has been received and will be shipped to you<?= htmlspecialchars($address) ?>.</p>
+    <p>Your order for <?= htmlspecialchars($itemId) ?> has been received and will be shipped to <?= htmlspecialchars($address) ?>.</p>
     <p>Total paid: $<?= htmlspecialchars(number_format($total, 2)) ?> via <?= htmlspecialchars($paymentMethod) ?>.</p>
 </div>
 

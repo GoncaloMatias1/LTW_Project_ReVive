@@ -35,7 +35,7 @@ drawHeader('Your Wishlist', true, true, $session);
             <?php endforeach; ?>
         </div>
     <?php else: ?>
-        <p>No wishlist yet.</p>
+        <p>No items in your wishlist yet.</p>
     <?php endif; ?>
 </div>
 

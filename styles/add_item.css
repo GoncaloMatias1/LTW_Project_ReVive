@@ -1,3 +1,9 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
 .add_item_container {
     max-width: 600px;
     margin: 50px auto;
@@ -54,4 +60,22 @@
 
 .add_item_container button:hover {
     background-color: #0056b3;
+}
+
+@media screen and (max-width: 600px) {
+    .add_item_container {
+        padding: 10px;
+    }
+
+    .add_item_container input[type="text"],
+    .add_item_container input[type="number"],
+    .add_item_container input[type="file"],
+    .add_item_container select,
+    .add_item_container textarea {
+        padding: 8px;
+    }
+
+    .add_item_container button {
+        padding: 12px 0;
+    }
 }

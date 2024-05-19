@@ -38,12 +38,14 @@
 
 .buttons {
     display: flex;
+    flex-direction: column;
     gap: 10px;
     margin-top: 20px;
 }
 
 .buttons form {
     margin: 0;
+    width: 100%;
 }
 
 .item-detail button {
@@ -54,11 +56,20 @@
     cursor: pointer;
     font-size: 18px;
     border-radius: 5px;
+    width: 100%;
     transition: background-color 0.3s;
 }
 
 .item-detail button:hover {
     background-color: #0056b3;
+}
+
+.item-detail .delete-button {
+    background-color: #ff4d4d;
+}
+
+.item-detail .delete-button:hover {
+    background-color: #cc0000;
 }
 
 .reviews-checkout {
@@ -123,4 +134,112 @@
 
 .message-button:hover {
     background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+    .item-info {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .item-info img {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .item-details h1 {
+        font-size: 22px;
+    }
+
+    .item-details p {
+        font-size: 14px;
+    }
+
+    .buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .reviews-checkout {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .reviews, .checkout {
+        flex: 1;
+    }
+
+    .reviews h2, .checkout h2 {
+        font-size: 18px;
+    }
+
+    .reviews label, .checkout label {
+        font-size: 14px;
+    }
+
+    .reviews input, .reviews textarea, .checkout input {
+        font-size: 14px;
+    }
+
+    .seller-info h3 {
+        font-size: 16px;
+    }
+
+    .seller-info p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .item-info {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .item-info img {
+        width: 100%;
+        max-width: 200px;
+    }
+
+    .item-details h1 {
+        font-size: 20px;
+    }
+
+    .item-details p {
+        font-size: 12px;
+    }
+
+    .buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .reviews-checkout {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .reviews, .checkout {
+        flex: 1;
+    }
+
+    .reviews h2, .checkout h2 {
+        font-size: 16px;
+    }
+
+    .reviews label, .checkout label {
+        font-size: 12px;
+    }
+
+    .reviews input, .reviews textarea, .checkout input {
+        font-size: 12px;
+    }
+
+    .seller-info h3 {
+        font-size: 14px;
+    }
+
+    .seller-info p {
+        font-size: 12px;
+    }
 }

@@ -53,3 +53,39 @@
 .add-category-button:hover {
     background-color: #0056b3;
 }
+
+
+@media (max-width: 768px) {
+    .category {
+        flex: 0 1 45%;
+        margin-bottom: 20px;
+    }
+
+    .add-category-button {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .categories-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .category {
+        flex: 0 1 80%;
+        margin-bottom: 15px;
+    }
+
+    .category h3 {
+        font-size: 16px;
+    }
+
+    .add-category-button {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+    }
+}

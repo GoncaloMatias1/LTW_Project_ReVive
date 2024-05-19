@@ -79,10 +79,42 @@ body {
     .item {
         flex: 1 1 calc(50% - 20px);
     }
+
+    .item img {
+        height: 140px;
+    }
+
+    .item h3 {
+        font-size: 16px;
+    }
+
+    .item p {
+        font-size: 12px;
+    }
+
+    .item .price {
+        font-size: 14px;
+    }
 }
 
 @media (max-width: 480px) {
     .item {
         flex: 1 1 100%;
+    }
+
+    .item img {
+        height: 120px;
+    }
+
+    .item h3 {
+        font-size: 14px;
+    }
+
+    .item p {
+        font-size: 12px;
+    }
+
+    .item .price {
+        font-size: 14px;
     }
 }

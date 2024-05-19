@@ -1,3 +1,9 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
 .checkout-container {
     max-width: 1000px;
     margin: 40px auto;
@@ -64,4 +70,59 @@
 
 .checkout-container button:hover {
     background-color: #0056b3;
+}
+
+
+@media (max-width: 768px) {
+    .checkout-container {
+        padding: 15px;
+    }
+
+    .checkout-container h1 {
+        font-size: 22px;
+    }
+
+    .checkout-container label, .checkout-container input, .checkout-container select {
+        font-size: 14px;
+    }
+
+    .checkout-container button {
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .form-row {
+        flex-direction: column;
+    }
+
+    .form-group {
+        flex: 1 1 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .checkout-container {
+        padding: 10px;
+    }
+
+    .checkout-container h1 {
+        font-size: 20px;
+    }
+
+    .checkout-container label, .checkout-container input, .checkout-container select {
+        font-size: 12px;
+    }
+
+    .checkout-container button {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .form-row {
+        flex-direction: column;
+    }
+
+    .form-group {
+        flex: 1 1 100%;
+    }
 }

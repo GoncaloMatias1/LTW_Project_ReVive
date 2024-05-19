@@ -21,7 +21,6 @@ if ($transaction) {
     $buyer = Users::getUser($db, $transaction->buyer_id);
     $seller = Users::getUser($db, $transaction->seller_id);
 
-    // Construct the buyer's address
     $address = "{$buyer->street}, {$buyer->door}, {$buyer->city}, {$buyer->state}, {$buyer->postalCode}";
 
     ?>

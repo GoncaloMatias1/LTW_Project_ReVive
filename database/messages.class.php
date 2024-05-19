@@ -35,7 +35,6 @@ class Message {
         $stmt->execute([$user_id, $receiver_id, $receiver_id, $user_id, $item_id]);
         $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
-        // Mark messages as read
         $stmt = $db->prepare('UPDATE messages SET is_read = 1 WHERE receiver_id = ? AND sender_id = ? AND item_id = ?');
         $stmt->execute([$user_id, $receiver_id, $item_id]);
     

@@ -18,7 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit();
     }
 
-    // Check if email already exists
     $stmt = $db->prepare('SELECT COUNT(*) FROM users WHERE email = ?');
     $stmt->execute([$email]);
     if ($stmt->fetchColumn() > 0) {

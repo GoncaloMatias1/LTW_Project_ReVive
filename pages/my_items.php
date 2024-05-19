@@ -41,7 +41,6 @@ drawHeader('My Items', true, true, $session);
                     </div>
                     <?php if ($item->sold_date): ?>
                         <?php 
-                        // Retrieve the transaction ID for the sold item
                         $transaction = Transaction::getTransactionDetailsByItem($db, $item->id);
                         ?>
                         <div class="sold-notification">

@@ -16,6 +16,7 @@
 
 ## Screenshots
 
+![MainPage](images/main.png)
 ![Categories](images/categories.png)
 ![Item](images/item.png)
 ![Login](images/login.png)

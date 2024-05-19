@@ -9,7 +9,7 @@ function drawHeader($title = 'reVive : Buy and Sell', $includeTopBar = false, $i
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title><?= $title; ?></title>
+        <title><?= htmlspecialchars($title); ?></title>
         <link rel="stylesheet" type="text/css" href="../styles/register.css">
         <link rel="stylesheet" type="text/css" href="../styles/mainPage.css">
         <link rel="stylesheet" type="text/css" href="../styles/login.css">
@@ -35,7 +35,10 @@ function drawHeader($title = 'reVive : Buy and Sell', $includeTopBar = false, $i
                             <a href="../pages/price_filter.php">Price</a>
                             <a href="../pages/my_items.php">My Items</a>
                             <a href="../pages/wishlist.php">Wishlist</a> 
-                            <?php $unreadCount = $session->getUnreadMessageCount(getDatabaseConnection()); ?>
+                            <?php
+                            $db = getDatabaseConnection();
+                            $unreadCount = $session->getUnreadMessageCount($db);
+                            ?>
                             <a href="../pages/conversations.php">Messages<?= $unreadCount > 0 ? " ($unreadCount)" : "" ?></a>
                             <?php if ($includeProfileIcon): ?>
                                 <a href="../pages/profile.php" class="profile-icon">Profile</a>

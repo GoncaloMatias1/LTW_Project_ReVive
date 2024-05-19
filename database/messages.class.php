@@ -49,14 +49,23 @@ class Message {
 
     public static function getConversations(PDO $db, int $user_id): array {
         $stmt = $db->prepare('
-            SELECT m.item_id, m.receiver_id, u.username, i.title
+            SELECT m.item_id, 
+                   CASE 
+                       WHEN m.sender_id = ? THEN m.receiver_id 
+                       ELSE m.sender_id 
+                   END as other_user_id,
+                   u.username, i.title
             FROM messages m
-            JOIN users u ON m.receiver_id = u.user_id
+            JOIN users u ON u.user_id = CASE 
+                                           WHEN m.sender_id = ? THEN m.receiver_id 
+                                           ELSE m.sender_id 
+                                       END
             JOIN items i ON m.item_id = i.item_id
             WHERE m.sender_id = ? OR m.receiver_id = ?
-            GROUP BY m.item_id, m.receiver_id
+            GROUP BY m.item_id, other_user_id
         ');
-        $stmt->execute([$user_id, $user_id]);
+        $stmt->execute([$user_id, $user_id, $user_id, $user_id]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }
+?>

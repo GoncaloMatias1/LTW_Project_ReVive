@@ -25,7 +25,7 @@ drawHeader('Conversations', true, $session->isLoggedIn(), $session);
         <?php if (!empty($conversations)): ?>
             <?php foreach ($conversations as $conversation): ?>
                 <div class="conversation">
-                    <a href="message.php?item_id=<?= htmlspecialchars($conversation['item_id']) ?>&receiver_id=<?= htmlspecialchars($conversation['receiver_id']) ?>">
+                    <a href="message.php?item_id=<?= htmlspecialchars($conversation['item_id']) ?>&receiver_id=<?= htmlspecialchars($conversation['other_user_id']) ?>">
                         <p>Messages with <?= htmlspecialchars($conversation['username']) ?> about <?= htmlspecialchars($conversation['title']) ?></p>
                     </a>
                 </div>

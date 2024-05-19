@@ -29,7 +29,7 @@ class Users {
 
     function save($db) {
         $stmt = $db->prepare('
-        UPDATE Users SET name = ?, username = ?, street = ?, door = ?, city = ?, state = ?, postalCode = ?
+        UPDATE users SET name = ?, username = ?, street = ?, door = ?, city = ?, state = ?, postalCode = ?
         WHERE user_id = ?
         ');
         $stmt->execute([$this->name, $this->username, $this->street, $this->door, $this->city, $this->state, $this->postalCode, $this->id]);
@@ -38,7 +38,7 @@ class Users {
     public static function getUserLogIn(PDO $db, string $email, string $password): ?Users {
         $stmt = $db->prepare('
             SELECT user_id, name, username, email, password, is_admin, street, door, city, state, postalCode
-            FROM Users
+            FROM users
             WHERE lower(email) = ?
         ');
         $stmt->execute([strtolower($email)]);

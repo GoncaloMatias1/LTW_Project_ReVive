@@ -107,10 +107,10 @@ class Item {
 
     public static function getItemsByPriceRange(PDO $db, float $minPrice, ?float $maxPrice): array {
         if ($maxPrice === null) {
-            $stmt = $db->prepare("SELECT * FROM Items WHERE price >= ?");
+            $stmt = $db->prepare("SELECT * FROM items WHERE price >= ? AND sold_date IS NULL");
             $stmt->execute([$minPrice]);
         } else {
-            $stmt = $db->prepare("SELECT * FROM Items WHERE price >= ? AND price <= ?");
+            $stmt = $db->prepare("SELECT * FROM items WHERE price >= ? AND price <= ? AND sold_date IS NULL");
             $stmt->execute([$minPrice, $maxPrice]);
         }
         

@@ -30,5 +30,12 @@ class Transaction {
         $data = $stmt->fetch(PDO::FETCH_ASSOC);
         return $data ? new Transaction($data) : null;
     }
+
+    public static function getTransactionDetailsByItem(PDO $db, int $item_id): ?Transaction {
+        $stmt = $db->prepare('SELECT * FROM transactions WHERE item_id = ?');
+        $stmt->execute([$item_id]);
+        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $data ? new Transaction($data) : null;
+    }
 }
 ?>

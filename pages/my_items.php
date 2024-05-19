@@ -40,9 +40,13 @@ drawHeader('My Items', true, true, $session);
                         </form>
                     </div>
                     <?php if ($item->sold_date): ?>
+                        <?php 
+                        // Retrieve the transaction ID for the sold item
+                        $transaction = Transaction::getTransactionDetailsByItem($db, $item->id);
+                        ?>
                         <div class="sold-notification">
                             <p>This item has been sold!</p>
-                            <a href="print_shipping_form.php?transaction_id=<?= htmlspecialchars($item->id) ?>" class="print-button">Print Shipping Form</a>
+                            <a href="print_shipping_form.php?transaction_id=<?= htmlspecialchars($transaction->transaction_id) ?>" class="print-button">Print Shipping Form</a>
                         </div>
                     <?php endif; ?>
                 </div>

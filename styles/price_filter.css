@@ -5,14 +5,14 @@
     padding: 20px;
 }
 
-.categories-list {
+.price-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     gap: 20px;
 }
 
-.category {
+.price {
     flex: 0 1 calc(30% - 20px);
     border: 1px solid #ddd;
     border-radius: 10px;
@@ -24,68 +24,35 @@
     transition: transform 0.2s;
 }
 
-.category:hover {
+.price:hover {
     transform: translateY(-5px);
 }
 
-.category a {
+.price a {
     text-decoration: none; 
     color: black;
-}
-
-.category h3 {
-    margin: 10px 0;
     font-size: 18px;
-    color: black;
 }
-
-.add-category-button {
-    margin-top: 10px;
-    padding: 10px 20px;
-    background-color: #007aff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.add-category-button:hover {
-    background-color: #0056b3;
-}
-
 
 @media (max-width: 768px) {
-    .category {
+    .price {
         flex: 0 1 45%;
         margin-bottom: 20px;
-    }
-
-    .add-category-button {
-        width: 100%;
-        padding: 10px;
-        font-size: 16px;
     }
 }
 
 @media (max-width: 480px) {
-    .categories-list {
+    .price-list {
         flex-direction: column;
         align-items: center;
     }
 
-    .category {
+    .price {
         flex: 0 1 80%;
         margin-bottom: 15px;
     }
 
-    .category h3 {
+    .price a {
         font-size: 16px;
-    }
-
-    .add-category-button {
-        width: 100%;
-        padding: 10px;
-        font-size: 14px;
     }
 }

@@ -27,7 +27,7 @@ drawHeader('Category Items', true, $session->isLoggedIn(), $session);
                         <a href='item.php?id=" . htmlspecialchars($item->id) . "'>
                             <img src='" . htmlspecialchars($item->image_path) . "' alt='" . htmlspecialchars($item->title) . "'>
                             <h3>" . htmlspecialchars($item->title) . "</h3>
-                            <p>Price: $" . htmlspecialchars(number_format($item->price, 2)) . "</p>
+                            <p class='price'>Price: $" . htmlspecialchars(number_format($item->price, 2)) . "</p>
                         </a>
                     </div>";
             }

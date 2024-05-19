@@ -23,25 +23,29 @@ function drawHeader($title = 'reVive : Buy and Sell', $includeTopBar = false, $i
                     <a href="../pages/index.php">reVive</a>
                     <form action="search_page.php" method="POST">
                         <input type="text" name="search" placeholder="Search">
-                        <button type="submit" name="submit-search"> Search</button>
+                        <button type="submit" name="submit-search">Search</button>
                     </form>             
                 </div>
                 <div class="top-bar-right">
-                    <?php if ($session && $session->isLoggedIn()): ?>
-                        <a href="../pages/create_item.php" class="profile-icon">Sell Item</a>
-                        <a href="../pages/categories.php">Categories</a>
-                        <a href="../pages/my_items.php">My Items</a>
-                        <a href="../pages/wishlist.php">Wishlist</a> 
-                        <?php $unreadCount = $session->getUnreadMessageCount(getDatabaseConnection()); ?>
-                        <a href="../pages/conversations.php">Messages<?= $unreadCount > 0 ? " ($unreadCount)" : "" ?></a>
-                        <?php if ($includeProfileIcon): ?>
-                            <a href="../pages/profile.php" class="profile-icon">Profile</a>
+                    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+                    <div class="menu-items">
+                        <?php if ($session && $session->isLoggedIn()): ?>
+                            <a href="../pages/create_item.php" class="profile-icon">Sell Item</a>
+                            <a href="../pages/categories.php">Categories</a>
+                            <a href="../pages/price_filter.php">Price</a>
+                            <a href="../pages/my_items.php">My Items</a>
+                            <a href="../pages/wishlist.php">Wishlist</a> 
+                            <?php $unreadCount = $session->getUnreadMessageCount(getDatabaseConnection()); ?>
+                            <a href="../pages/conversations.php">Messages<?= $unreadCount > 0 ? " ($unreadCount)" : "" ?></a>
+                            <?php if ($includeProfileIcon): ?>
+                                <a href="../pages/profile.php" class="profile-icon">Profile</a>
+                            <?php endif; ?>
+                            <a href="../actions/action_logout.php">Logout</a>
+                        <?php else: ?>
+                            <a href="../pages/login.php">Login</a>
+                            <a href="../pages/register.php">Create Account</a>
                         <?php endif; ?>
-                        <a href="../actions/action_logout.php">Logout</a>
-                    <?php else: ?>
-                        <a href="../pages/login.php">Login</a>
-                        <a href="../pages/register.php">Create Account</a>
-                    <?php endif; ?>
+                    </div>
                 </div>
             </div>
             <?php endif; ?>
@@ -64,6 +68,16 @@ function drawFooter() {
             </div>
             <p>LTW Buy & Sell &copy; 2024</p>
         </footer>
+        <script>
+        function toggleMenu() {
+            const menuItems = document.querySelector('.menu-items');
+            if (menuItems.style.display === 'none' || menuItems.style.display === '') {
+                menuItems.style.display = 'flex';
+            } else {
+                menuItems.style.display = 'none';
+            }
+        }
+        </script>
     </body>
     </html>
     <?php

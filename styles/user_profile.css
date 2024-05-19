@@ -72,3 +72,25 @@ button:hover {
 .user-reviews strong, .sold-items strong {
     color: #333;
 }
+
+@media screen and (max-width: 768px) {
+    .profile-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile-details, .user-reviews, .sold-items {
+        max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .profile-details p, .user-reviews p, .sold-items p {
+        font-size: 14px;
+    }
+
+    .profile-details form button, .user-reviews button, .sold-items button {
+        font-size: 16px;
+        padding: 8px 10px;
+    }
+}

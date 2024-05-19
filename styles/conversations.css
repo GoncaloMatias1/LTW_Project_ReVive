@@ -1,3 +1,10 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
+
 .conversations-container {
     max-width: 800px;
     margin: 40px auto;
@@ -47,4 +54,73 @@
     text-align: center;
     font-size: 16px;
     color: #999;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px; 
+}
+
+button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007aff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+    .conversations-container {
+        margin: 20px;
+        padding: 15px;
+    }
+
+    .conversations-container h1 {
+        font-size: 20px;
+    }
+
+    .conversations-list {
+        gap: 10px;
+    }
+
+    .conversation {
+        padding: 10px;
+    }
+
+    .conversation a {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .conversations-container {
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .conversations-container h1 {
+        font-size: 18px;
+    }
+
+    .conversations-list {
+        gap: 8px;
+    }
+
+    .conversation {
+        padding: 8px;
+    }
+
+    .conversation a {
+        font-size: 14px;
+    }
 }

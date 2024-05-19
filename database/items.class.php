@@ -104,5 +104,21 @@ class Item {
             $this->user_id
         ]);
     }
+
+    public static function getItemsByPriceRange(PDO $db, float $minPrice, ?float $maxPrice): array {
+        if ($maxPrice === null) {
+            $stmt = $db->prepare("SELECT * FROM Items WHERE price >= ?");
+            $stmt->execute([$minPrice]);
+        } else {
+            $stmt = $db->prepare("SELECT * FROM Items WHERE price >= ? AND price <= ?");
+            $stmt->execute([$minPrice, $maxPrice]);
+        }
+        
+        $items = [];
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $items[] = new Item($row);
+        }
+        return $items;
+    }
 }
 ?>

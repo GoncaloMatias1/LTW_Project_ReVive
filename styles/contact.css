@@ -1,0 +1,124 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    flex-shrink: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.content-container {
+    text-align: left;
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.content-container h2 {
+    font-size: 32px;
+    text-align: center;
+}
+
+.content-container p {
+    margin: 15px 0;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.content-container a {
+    color: #007aff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.content-container a:hover {
+    text-decoration: underline;
+}
+
+
+@media (max-width: 768px) {
+    .content-container {
+        padding: 10px;
+    }
+
+    .content-container h2 {
+        font-size: 28px;
+    }
+
+    .content-container p {
+        font-size: 16px;
+    }
+
+    .top-bar, .bottom-bar {
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+    }
+
+    .top-bar form {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .top-bar-left, .bottom-bar-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .top-bar a, .bottom-bar-button {
+        margin: 5px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .content-container {
+        padding: 10px;
+    }
+
+    .content-container h2 {
+        font-size: 24px;
+    }
+
+    .content-container p {
+        font-size: 14px;
+    }
+
+    .top-bar, .bottom-bar {
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+    }
+
+    .top-bar form {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .top-bar-left, .bottom-bar-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .top-bar a, .bottom-bar-button {
+        margin: 5px 0;
+    }
+}

@@ -7,6 +7,8 @@ $session = new Session();
 drawHeader('Terms of Service', true, false, $session);
 ?>
 
+<link rel="stylesheet" type="text/css" href="../styles/terms.css">
+
 <div class="content-container">
     <h2>Terms of Service</h2>
     <p>By using our website, you agree to comply with and be bound by the following terms and conditions of use. Please read these terms carefully before using our site.</p>

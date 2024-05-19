@@ -1,3 +1,23 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+footer {
+    flex-shrink: 0; 
+    width: 100%; 
+    text-align: center; 
+}
+
 .profile-container {
     max-width: 800px;
     margin: 40px auto;
@@ -41,26 +61,6 @@
     background-color: #0056b3;
 }
 
-body, html {
-    height: 100%;
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-}
-
-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    flex-grow: 1;
-}
-
-footer {
-    flex-shrink: 0; 
-    width: 100%; 
-    text-align: center; 
-}
-
 .profile-container {
     text-align: center;
 }
@@ -91,4 +91,53 @@ footer {
 
 .user-reviews strong {
     color: #333;
+}
+
+
+@media (max-width: 768px) {
+    .profile-container {
+        padding: 15px;
+    }
+
+    .profile-details h2 {
+        font-size: 22px;
+    }
+
+    .profile-details p {
+        font-size: 14px;
+    }
+
+    .profile-details a {
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .user-reviews li {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-container {
+        padding: 10px;
+    }
+
+    .profile-details h2 {
+        font-size: 20px;
+    }
+
+    .profile-details p {
+        font-size: 12px;
+    }
+
+    .profile-details a {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .user-reviews li {
+        padding: 8px;
+        font-size: 12px;
+    }
 }

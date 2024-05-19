@@ -7,6 +7,8 @@ $session = new Session();
 drawHeader('Cookie Policy', true, false, $session);
 ?>
 
+<link rel="stylesheet" type="text/css" href="../styles/cookies.css">
+
 <div class="content-container">
     <h2>Cookie Policy</h2>
     <p>Please read this Cookie Policy and Similar Technologies carefully before using this website or application.</p>
@@ -28,10 +30,8 @@ drawHeader('Cookie Policy', true, false, $session);
         <li>To display ads based on the content you are viewing, the application you are using, your approximate location, or the type of your device, subject to your consent.</li>
     </ul>
     
-    
     <h3>Managing Your Cookie Settings</h3>
     <p>In our services, we give you full control and the ability to refuse at any time the use of any third-party plugins or tools that connect to external service provider servers. By clicking the "View Purposes" button displayed in our cookie banner, you can access the preferences manager. There, you will find a comprehensive list of cookie modules we use, as well as details about cookies set by our advertising partners and other vendors, along with the purposes for which we use these vendors. With one click, you can enable or disable any non-essential cookies, whether set by us or by one of our partners. Cookies can be enabled/disabled as a complete category or individually.</p>
-    
     
     <p>If you have any questions or concerns about our Cookie Policy, please contact us.</p>
 </div>

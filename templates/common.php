@@ -32,6 +32,7 @@ function drawHeader($title = 'reVive : Buy and Sell', $includeTopBar = false, $i
                         <?php if ($session && $session->isLoggedIn()): ?>
                             <a href="../pages/create_item.php" class="profile-icon">Sell Item</a>
                             <a href="../pages/categories.php">Categories</a>
+                            <a href="../pages/price_filter.php">Price</a>
                             <a href="../pages/my_items.php">My Items</a>
                             <a href="../pages/wishlist.php">Wishlist</a> 
                             <?php $unreadCount = $session->getUnreadMessageCount(getDatabaseConnection()); ?>

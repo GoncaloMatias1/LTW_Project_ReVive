@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # ReVive
 
 ## Group ltw01g02
@@ -81,6 +80,3 @@ We also implemented the following additional requirements:
 - [ ] **Shipping Costs**
 - [x] **Real-Time Messaging System**
 - [x] **UI for smaller screens**
-=======
-# ReVive
->>>>>>> 7e0aa9eef1bee9fb5d01d6401b224a9d4b345d2c
